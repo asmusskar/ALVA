@@ -1,5 +1,7 @@
+Skar, A. and Andersen, S (2020). ALVA. https://doi.org/10.11583/DTU.12387305.v1
+
 # ALVA
-ALVA is a MATLAB-package for advanced pavement modeling that is highly adaptive
+Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement modeling. The aim with the software is to equip the civil engineering community with an advanced pavement modeling tool and computer package that is highly adaptive, transparent and open-access, capable of supporting current and future pavement evaluation needs. 
 
 <div>
 <img src="images/Roadmap_ALVA.png" width="90%">
