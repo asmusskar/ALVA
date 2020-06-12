@@ -138,7 +138,7 @@ ellea           = validation_let(alva); % Collumns: [length/depth,sigx
 % Plotting
 % -------------------------------------------------------------------------
 
-figure, title('Shear stresses (x=10, y=20)');
+figure, title('Shear stress (x=10, y=20)');
 hold on, grid on
 plot(sigxy,alva.Xd(:,3),':ks','LineWidth',1.25,'MarkerSize',5)
 hold on
@@ -156,6 +156,6 @@ legend({'ALVA - sigxy','ALVA - sigyz','ALVA - sigxz',...
     'ELLEA1 - sigxy','ELLEA1 - sigyz','ELLEA1 - sigxz'},...
     'Location','SouthEast', 'FontSize',9)
 axis ij
-xlabel('Stress, \sigma_{z} [MPa]')
+xlabel('Stress, \sigma [MPa]')
 ylabel('Depth, z-axis [mm]')
 hold off
