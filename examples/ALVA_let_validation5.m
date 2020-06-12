@@ -141,7 +141,7 @@ ellea           = validation_let(alva); % Collumns: [length/depth,epsx
 % Plotting
 % -------------------------------------------------------------------------
 
-figure, title('Shear stresses (x=10, y=20)');
+figure, title('Shear strain (x=10, y=20)');
 hold on, grid on
 plot(epsxy,alva.Xd(:,3),':ks','LineWidth',1.25,'MarkerSize',5)
 hold on
