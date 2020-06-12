@@ -21,12 +21,12 @@ ABCD   = alva.ABCD;   % Coefficients of integration
 % -------------------------------------------------------------------------
 %[1] Burmister, D. M. (1945). The general theory of stresses and 
 %    displacements in layered systems. i. Journal of applied physics, 16(2)
-%    , 89–94.
+%    , 89â€“94.
 %[2] Huang, Y.H., 2003. Pavement Analysis Design, 2nd Edition, 
 %    Prentice-Hall, New Jersey.
 %[3] Ioannides, A. M., & Khazanovich, L. (1998). General formulation for 
 %    multilayered pavement systems. Journal of transportation engineering, 
-%    124(1), 82–90.
+%    124(1), 82â€“90.
 % -------------------------------------------------------------------------
 % If we only have one layer, we generate two layers
 
@@ -404,38 +404,12 @@ alva.sigyz = sig(5:6:end-1);
 alva.sigxz = sig(6:6:end);   
 
 % Strains
-if sum(Xd(:,3)) == 0 % onlys surface points
-    alva.epsx = 1./alva.E(1).*(alva.sigx-alva.nu(1).*(alva.sigy+alva.sigz));
-    alva.epsy = 1./alva.E(1).*(alva.sigy-alva.nu(1).*(alva.sigz+alva.sigx));
-    alva.epsz = 1./alva.E(1).*(alva.sigz-alva.nu(1).*(alva.sigx+alva.sigy));
-    alva.epsxy = (1+alva.nu(1))./alva.E(1).*alva.sigxy;
-    alva.epsyz = (1+alva.nu(1)./alva.E(1)).*alva.sigyz;
-    alva.epsxz = (1+alva.nu(1))./alva.E(1).*alva.sigxz;
-else
-    ide = zeros(length(alva.E),1); idb = ide; % index numbers for
-    for i=1:length(alva.E)-1
-        ide(i) = find(alva.Xd(:,3) < alva.zi(i), 1, 'last' )+1;
-        if i == 1
-            idb(i) = 1;
-        else
-            idb(i) = ide(i-1)+1;
-        end
-    end
-    ide(end) = length(alva.sigx);
-    idb(end) = ide(end-1)+1;
-    
-    for i=1:length(alva.E)
-        alva.epsx(idb(i):ide(i),1) = 1./alva.E(i).*(alva.sigx(idb(i):ide(i))-...
-            alva.nu(i).*(alva.sigy(idb(i):ide(i))+alva.sigz(idb(i):ide(i))));
-        alva.epsy(idb(i):ide(i),1) = 1./alva.E(i).*(alva.sigy(idb(i):ide(i))-...
-            alva.nu(i).*(alva.sigz(idb(i):ide(i))+alva.sigx(idb(i):ide(i))));
-        alva.epsz(idb(i):ide(i),1) = 1./alva.E(i).*(alva.sigz(idb(i):ide(i))-...
-            alva.nu(i).*(alva.sigx(idb(i):ide(i))+alva.sigy(idb(i):ide(i))));
-        alva.epsxy(idb(i):ide(i),1) = ((1+alva.nu(i))./alva.E(i)).*...
-            (alva.sigxy(idb(i):ide(i)));
-        alva.epsyz(idb(i):ide(i),1) = ((1+alva.nu(i))./alva.E(i)).*...
-            (alva.sigyz(idb(i):ide(i)));
-        alva.epsxz(idb(i):ide(i),1) = ((1+alva.nu(i))./alva.E(i)).*...
-            (alva.sigxz(idb(i):ide(i)));
-    end
-end
+Eel = Ee(1:xl:end); % Reduce vector to evaluation points only
+Nul = Nu(1:xl:end); % Reduce vector to evaluation points only
+
+alva.epsx = 1./Eel.*(alva.sigx-Nul.*(alva.sigy+alva.sigz));
+alva.epsy = 1./Eel.*(alva.sigy-Nul.*(alva.sigz+alva.sigx));
+alva.epsz = 1./Eel.*(alva.sigz-Nul.*(alva.sigx+alva.sigy));
+alva.epsxy = (1+Nul)./Eel.*alva.sigxy;
+alva.epsyz = (1+Nul)./Eel.*alva.sigyz;
+alva.epsxz = (1+Nul)./Eel.*alva.sigxz;
