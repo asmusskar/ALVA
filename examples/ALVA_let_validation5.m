@@ -159,6 +159,6 @@ legend({'ALVA - epsxy','ALVA - epsyz','ALVA - epsxz',...
     'ELLEA1 - epsxy','ELLEA1 - epsyz','ELLEA1 - epsxz'},...
     'Location','SouthEast', 'FontSize',9)
 axis ij
-xlabel('Strain, \epsilon_{z} [\mu m]')
+xlabel('Strain, \epsilon [-]')
 ylabel('Depth, z-axis [mm]')
 hold off
