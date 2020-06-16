@@ -86,8 +86,8 @@ tauD = 1e3;       % Retardation time of the material response [s]
 % -------------------------------------------------------------------------
 % Load configuration
 % -------------------------------------------------------------------------
-alva.q   = 1.1e6;               % Tire pressure vector [MPa]
-alva.a   = 0.15;                % Load radius vector [mm]
+alva.q   = 1.1;                 % Tire pressure vector [MPa]
+alva.a   = 150;                 % Load radius vector [mm]
 alva.Xl  = [0 300];             % Load coordinates in [mm]
 
 % -------------------------------------------------------------------------
