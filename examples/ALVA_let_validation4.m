@@ -85,7 +85,7 @@ alva.kh = [1e9 1e9];         % Interface bonding/horizontal spring [MPa/mm]
 % -------------------------------------------------------------------------
 alva.q  = 1.1;    % Load pressure [MPa] (uniform vertical pressure)
 alva.a  = 150;    % Load radii [mm] (circular load)
-alva.Xl = [0 0];  % Load positions [m]: [x1 y1; x2 y2;..xi yi];
+alva.Xl = [0 0];  % Load positions [mm]: [x1 y1; x2 y2;..xi yi];
 
 % -------------------------------------------------------------------------
 % Location of evaluation points: [x1 y1 z1; x2 y2 z2;..]
