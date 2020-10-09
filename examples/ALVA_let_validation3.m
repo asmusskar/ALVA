@@ -2,53 +2,20 @@
 % This script tests the implementation of the acclerated ALVA LET model, 
 % calculating the surface displacements with length for a multilayered 
 % pavement subjected to two circular loads utilizing the method proposed in 
-% [1]. The results are compared to the computer programme ELLEA1 [2].
+% (Andersen, Levenberg, & Andersen, 2020). The results are compared to the 
+% computer programme ELLEA1.
 % -------------------------------------------------------------------------
 % References
 % -------------------------------------------------------------------------
-%[1] Andersen, S., Levenberg, E., & Andersen, M. B (2020). Efficient 
-%    reevaluation of surface displacements in a layered elastic half-space. 
-%    The International Journal of Pavement Engineering 21(4), 1-8. 
-%    https://doi.org/10.1080/10298436.2018.1483502
-%[2] Levenberg, E. (2016). ELLEA1: Isotropic Layered Elasticity in Excel:
-%    Pavement analysis tool for students and engineers
+% Andersen, S., Levenberg, E., & Andersen, M. B (2020). Efficient 
+% reevaluation of surface displacements in a layered elastic half-space. 
+% The International Journal of Pavement Engineering 21(4), 1-8. 
+% https://doi.org/10.1080/10298436.2018.1483502
+%
+% Levenberg, E. (2016a). ELLEA1: Isotropic layered elasticity in excel: 
+% Pavement analysis tool for students and engineers.
 
 clear all, close all, clc
-% -------------------------------------------------------------------------
-% Definition of pavement system
-% -------------------------------------------------------------------------
-
-% y-> x ------------------- Pavement surface ---------------------------- %
-% |                              layer 1      ^      ^       ^
-% v z                                         | z1   |       |
-%                                             v      |       |
-% ---------------------------------------------------|-------|-------------
-%                                layer 2             | z2    |
-%                                                    v       |
-%------------------------------------------------------------|-------------
-%                                                            .
-%                                                            .
-% -------------------------------------------------------------------------
-%                                layer n-1                   .
-% -----------------------------------------------------------|-------------
-%                                layer n                     | infinity
-%                                                            v
-
-% -------------------------------------------------------------------------
-% Definition of coordinate system
-% -------------------------------------------------------------------------
-% (x,y)-plane:             Pavement surface     
-% z-direction:             Pavement depth              
-% Xl_i = (xl_i,yl_i):      Coordinates of load i on pavement surface
-% Xd_i = (xd_i,yd_i,zd_i): Coordinates of deformation point i
-%
-%                | Load 1 (Xl_1)              |  Load 2 (Xl_2)
-%                v                            v
-% y-> x  ------^----------Pavement surface --------------------------------
-% |             \                            ^
-% v z    ^      o  Xd_1 (deformation point 1) \
-%       /                                      o Xd_3 (deformation point 3)
-%      0 Xd_2 (deformation point 2)   
 
 % -------------------------------------------------------------------------
 % Select response analysis type
