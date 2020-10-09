@@ -3,8 +3,14 @@
 % responses at key locations for a multilayered pavement subjected to a 
 % single load and a dual load respectively utilizing the method proposed. 
 % The results are compared to benchmark results reported by the European 
-% Commission (https://trimis.ec.europa.eu/project/advanced-models-...
-% analytical-design-european-pavement-structures). 
+% Commission (Belgian Road Research Centre, 2000).
+% -------------------------------------------------------------------------
+% References
+% -------------------------------------------------------------------------
+% Belgian Road Research Centre. (2000). Advanced models for analytical 
+% design of european pavement structures. Brussels, Belgium: European 
+% Commission. Retrieved from https://trimis.ec.europa.eu/project/...
+% advanced-models-analytical-design-european-pavement-structures
 
 clear all, close all, clc
 
