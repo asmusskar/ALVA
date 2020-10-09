@@ -12,7 +12,7 @@ The components of the ALVA software (shown in the Figure) is briefly described b
 
 The core algorithm behind this package is based on LET, i.e., the classic formulation for an N-layered half-space, shown in Figure \ref{fig1}.
 
-![Figure 1: N-Layered half-space model\label{fig1}](images/N_layer.png)
+![Figure 1: N-Layered half-space model\label{fig1}](images/N_layer.png width="90%")
 
 In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus $E_n$, Poisson’s ratio $\nu_n$, and layer thickness $t_n$ (where $n$ denotes the layer number). This model is engaged to calculate the response at any point, A_j$, of interest and for a given set of uniformly distributed circular loadings with load radius, $a$, and pressure $q$). An overview of LET model assumptions and solution procedure is given in [@khazanovich:2007a].
 
