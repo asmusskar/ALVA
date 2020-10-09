@@ -96,7 +96,29 @@ The following examples are included in this package:
 | ALVA (slip) |   0.7   |  -119.5  |  0.7    | 216.5   | 0.3    | -77.8   | -9.7    |204.7 |
 
 <p>
-<b>Table 3</b>: Reference pavement system subjeceted to a single wheel load - unbonded interface between laye 1 and 2, bonded interface between layer 2 and 3.
+<b>Table 4</b>: Reference pavement system subjeceted to a single wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
+</p>
+
+| Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
+|-------------|---------|----------|---------|---------|-------|----------|---------|--------|
+| BISAR       |   0.7   |      0   | 186     |  170    |0      |     0    |  182    |  177   |
+| KENLAYER    |   1.5   |    -85   | 186     |  170    |0      |   -89    |  183    |  177   |
+| GAMES       |   0.7   |    -85   | 186     |  170    |0      |   -89    |  183    |  177   |
+| ALVA (slip) |   0.7   |  -84.9   | 186     | 169.7   | 0     |  -88.8   | 183.2   | 177.2  |
+| ALVA (bond) |   0.7   |  -84.9   | 186     | 169.7   | 0     |  -88.8   | 183.2   | 177.2  |
+<p>
+<b>Table 5</b>: Reference pavement system subjeceted to a dual wheel load - bonded interfaces.
+</p>
+
+| Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
+|-------------|---------|----------|---------|---------|-------|----------|---------|--------|
+| BISAR       |   0.7   |       0  |     9   |   193   | 0     |     0    |  -12    |   204 |
+| KENLAYER    |   0.7   |    -120  |    -1   |   216   | 0     |   -78    |  -10    |   205 |
+| GAMES       |   0.7   |    -101  |    -3   |   194   | 0     |  -106    |    1    |   205 |
+| ALVA (slip) |   0.7   |  -102.6  |  -9.2   | 193.4   | 0     |  -107    |-11.5    | 204.1 |
+
+<p>
+<b>Table 6</b>: Reference pavement system subjeceted to a dual wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
 </p>
 
 * `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating  vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
