@@ -34,9 +34,32 @@ The viscoelastic response is approximated based on the LET calculations utilizin
 The load moves in a straight line from x=-x<sub>0</sub> (Start) to x=x<sub>0</sub> (End). The travel path is decomposed into N intervals (i=1,…,N), each &Delta;x long. The point of response evaluation A<sub>j</sub> is indicated in the Figure; this point is located near the middle of the travel path (i.e., x-coordinate of zero), at y-coordinate y<sub>0</sub> and depth z<sub>0</sub> below the surface. 
 
 ## Validation examples
-ALVA comes with five validation examples (i.e., `main.m` scripts) comparing ALVA to existing codes and analytical formulations. 
+ALVA comes with seven validation examples (i.e., `main.m` scripts) comparing ALVA to existing codes and analytical formulations. 
 The example files can be found in the in the _../ALVA/examples_ folder and the results obtained with independent codes can be found in the found in the _../ALVA/validation_ folder.  
 The following examples are included in this package:
+
+* 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used softaware at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
+
+| Response, R | Description                                        |
+|-------------|----------------------------------------------------|
+| R1          | Vertical stress surface at center of load          | 
+| R2          | Horizontal strain bottom layer 1 at center of load |
+| R3          | Vertical strain top layer 2 at center of load      | 
+| R4          | Vertical strain top layer 3 at center of load      | 
+| R5          | Vertical stress surface at edge of load            | 
+| R6          | Horizontal strain bottom layer 1 at edge of load   | 
+| R7          | Vertical strain top layer 2 at edge of load        | 
+| R8          | Vertical strain top layer 3 at edge of load        |
+
+|    Response:|   R1         R2       R3       R4     R5        R6     R7        R8   |
+|-------------------------------------------------------------------------------------|
+| Software    |                                                                       |
+|-------------------------------------------------------------------------------------|
+| BISAR       |   0.7     -100.5    251.7      185    0.4     -61.9    192.2    177.5 |
+| KENLAYER    |   0.8     -100.5    251.6    185.3    0.3       -62    192.2      177 |
+| GAMES       |   0.7     -100.5    251.6    185.1    0.3     -61.9    192.2    177.5 |
+| ALVA (slip) |   0.7     -100.4    251.6    185.1    0.3     -61.8    192.3    177.5 |
+| ALVA (bond) |   0.7     -100.4    251.6    185.1    0.3     -61.8    192.3    177.5 |
 
 * `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating  vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
 
