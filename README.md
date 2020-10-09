@@ -7,22 +7,6 @@ Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement m
 <img src="images/Roadmap_ALVA.png" width="90%">
 </div>
 
-The core algorithm behind this package is based on LET, i.e., the classic formulation for an N-layered half-space, shown below.
-
-<div>
-<img src="images/N_layer.png" width="75%">
-</div>
-
-In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus $E_n$, Poisson’s ratio $\nu_n$, and layer thickness $t_n$ (where $n$ denotes the layer number). This model is engaged to calculate the response at any point, A_j$, of interest and for a given set of uniformly distributed circular loadings with load radius, $a$, and pressure $q$). An overview of LET model assumptions and solution procedure is given in [khazanovich et al. (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
-
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet). Viscoelastic layers are associated with a creep compliance and model parameters $D_0$ and $D_\infty$, the short and long time compliances (respectively), and shape parameters $\tau_D$ and $n_D$, controlling the transition between $D_0$ and $D_\infty$. 
-
-<div>
-<img src="images/VE_mesh.png" width="75%">
-</div>
-
-The load moves in a straight line from $x=-x_0$ (Start) to $x=x_0$ (End). The travel path is decomposed into $N$ intervals $(i=1,…,N)$, each $\Delta x$ long. The point of response evaluation is indicated in the Figure; this point is located near the middle of the travel path (i.e., $x$-coordinate of zero), at $y$-coordinate $y_0$ and depth $z_0$ below the surface. 
-
 The components of the ALVA software (shown in the Figure) is briefly described below:
 * `main.m` - main script for defining vehicle loading conditions, pavement structure geometry and material properties, numerical parameters (for balancing accuracy and efficiency), analysis type and evaluation points (i.e., location of the output response), and post-processing of the results.
 * `init_LET.m` - initialize the analysis of a layered elastic half space selecting between: (a) `let_response_full.m` - evaluates the response (displacements, stresses and strains) of a layered elastic half-space model or (b) `let_response_polfit.m` - evaluates the displacements of a layered elastic half space model at the surface only. 
@@ -32,12 +16,29 @@ The components of the ALVA software (shown in the Figure) is briefly described b
 * Additional support functions for efficient surface displacement calculations in `let_response_polfit.m` is `arb_func_polfit.m` – interpolates intermediate coefficients of integration, `polfit_int.m` – evaluates coefficient proportional integrals, and `polfit_abc.m` – evaluates coefficients a, b and c for the polynomial.
 Examples on ‘main.m’ scripts can be found in the _../ALVA/examples_ folder and all underlying components (i.e., source files) described above in the _../ALVA/basic_ folder.
 
+## Main input parameters
+The core algorithm behind this package is based on LET, i.e., the classic formulation for an N-layered half-space, shown below.
+
+<div>
+<img src="images/N_layer.png" width="75%">
+</div>
+
+In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus $E_n$, Poisson’s ratio $\nu_n$, and layer thickness $t_n$ (where $n$ denotes the layer number). This model is engaged to calculate the response at any point, A_j$, of interest and for a given set of uniformly distributed circular loadings with load radius, $a$, and pressure $q$). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
+
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet). Viscoelastic layers are associated with a creep compliance and model parameters $D_0$ and $D_\infty$, the short and long time compliances (respectively), and shape parameters $\tau_D$ and $n_D$, controlling the transition between $D_0$ and $D_\infty$. 
+
+<div>
+<img src="images/VE_mesh.png" width="75%">
+</div>
+
+The load moves in a straight line from $x=-x_0$ (Start) to $x=x_0$ (End). The travel path is decomposed into 'N' intervals $(i=1,…,N)$, each $\Delta x$ long. The point of response evaluation is indicated in the Figure; this point is located near the middle of the travel path (i.e., x-coordinate of zero), at $y$-coordinate $y_0$ and depth $z_0$ below the surface. 
+
 ## Validation examples
 ALVA comes with five validation examples (i.e., `main.m` scripts) comparing ALVA to existing codes and analytical formulations. 
 The example files can be found in the in the _../ALVA/examples_ folder and the results obtained with independent codes can be found in the found in the _../ALVA/validation_ folder.  
 The following examples are included in this package:
 
-* `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating  vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1]( https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
+* `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating  vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
 <div>
 <img src="images/Validation1.png" width="75%">
 </div>
