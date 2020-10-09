@@ -23,15 +23,15 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
 <img src="images/N_layer.png" width="90%">
 </div>
 
-In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n<sub>, Poisson’s ratio &Nu;<sub>n<sub>, and layer thickness t<sub>n (where n denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j<sub>, of interest and for a given set of uniformly distributed circular loadings with load radius, a, and pressure q). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
+In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n</sub>, Poisson’s ratio &Nu;<sub>n</sub>, and layer thickness t<sub>n</sub> (where n denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j<sub>, of interest and for a given set of uniformly distributed circular loadings with load radius, a, and pressure q). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
 
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet). Viscoelastic layers are associated with a creep compliance and model parameters D<sub>0<sub> and D<sub>&infin;<sub>, the short and long time compliances (respectively), and shape parameters &tau;<sub\D</sub> and n<sub\D<sub>;, controlling the transition between D<sub>0</sub> and D<sub>&infin;<sub>. 
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet). Viscoelastic layers are associated with a creep compliance and model parameters D<sub>0</sub> and D<sub>&infin;</sub>, the short and long time compliances (respectively), and shape parameters &tau;<sub\D</sub> and n<sub\D</sub>;, controlling the transition between D<sub>0</sub> and D<sub>&infin;</sub>. 
 
 <div>
 <img src="images/VE_mesh.png" width="90%">
 </div>
 
-The load moves in a straight line from x=-x<sub>0<sub> (Start) to x=x<sub>0<sub> (End). The travel path is decomposed into N intervals (i=1,…,N), each &Delta;x long. The point of response evaluation is indicated in the Figure; this point is located near the middle of the travel path (i.e., x-coordinate of zero), at y-coordinate y<sub>0<sub> and depth z<sub>0<sub> below the surface. 
+The load moves in a straight line from x=-x<sub>0</sub> (Start) to x=x<sub>0</sub> (End). The travel path is decomposed into N intervals (i=1,…,N), each &Delta;x long. The point of response evaluation is indicated in the Figure; this point is located near the middle of the travel path (i.e., x-coordinate of zero), at y-coordinate y<sub>0</sub> and depth z<sub>0</sub> below the surface. 
 
 ## Validation examples
 ALVA comes with five validation examples (i.e., `main.m` scripts) comparing ALVA to existing codes and analytical formulations. 
