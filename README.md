@@ -23,9 +23,9 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
 <img src="images/N_layer.png" width="90%">
 </div>
 
-In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n, Poisson’s ratio &Nu<sub>n, and layer thickness t<sub>n (where n denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j, of interest and for a given set of uniformly distributed circular loadings with load radius, a, and pressure q). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
+In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n;, Poisson’s ratio &Nu<sub>n;, and layer thickness t<sub>n; (where n denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j;, of interest and for a given set of uniformly distributed circular loadings with load radius, a, and pressure q). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
 
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet). Viscoelastic layers are associated with a creep compliance and model parameters D<sub>0 and D<sub>&infin, the short and long time compliances (respectively), and shape parameters &tau<sub\D and n<sub\D, controlling the transition between D<sub>0 and D<sub>&infin. 
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet). Viscoelastic layers are associated with a creep compliance and model parameters D<sub>0; and D<sub>&infin;, the short and long time compliances (respectively), and shape parameters &tau<sub\D; and n<sub\D;, controlling the transition between D<sub>0; and D<sub>&infin;. 
 
 <div>
 <img src="images/VE_mesh.png" width="90%">
