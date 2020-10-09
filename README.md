@@ -34,7 +34,7 @@ The viscoelastic response is approximated based on the LET calculations utilizin
 The load moves in a straight line from x=-x<sub>0</sub> (Start) to x=x<sub>0</sub> (End). The travel path is decomposed into N intervals (i=1,…,N), each &Delta;x long. The point of response evaluation A<sub>j</sub> is indicated in the Figure; this point is located near the middle of the travel path (i.e., x-coordinate of zero), at y-coordinate y<sub>0</sub> and depth z<sub>0</sub> below the surface. 
 
 ## Validation examples
-ALVA comes with seven validation examples (i.e., `main.m` scripts) comparing ALVA to existing codes and analytical formulations. 
+ALVA comes with six validation examples (i.e., `main.m` scripts) comparing ALVA to existing codes and analytical formulations. 
 The example files can be found in the in the _../ALVA/examples_ folder and the results obtained with independent codes can be found in the found in the _../ALVA/validation_ folder.  
 The following examples are included in this package:
 
