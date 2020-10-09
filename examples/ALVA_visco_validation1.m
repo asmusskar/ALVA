@@ -2,47 +2,21 @@
 % This script tests the implementation of the ALVA VE model, calculating 
 % the displacements for a single evaluation point on the surface of 
 % a multilayered pavement considering a single circular load. The results 
-% are compared to the computer programme ELLVA1 [1], see details in [2].
+% are compared to the computer programme ELLVA1, see details in 
+% (Levenberg, 2016c).
 % -------------------------------------------------------------------------
 % References
 % -------------------------------------------------------------------------
-%[1] Levenberg, E. (2018). ELLVA_VD: Isotropic Layered Viscoelasticity in
-%    Excel: Analysis tool for interpretation of deflections measured with a 
-%    moving load 
-%[2] Levenberg, E. (2016). Viscoelastic Pavement Modeling with a 
-%    Spreadsheet. In Eighth International Conference on Maintenance and 
-%    Rehabilitation of Pavements (pp. 746-755), Singapore
+% Levenberg, E. (2016b). ELLVA1: Isotropic layered viscoelasticity in 
+% excel (moving load): Advanced pavement analysis tool for students and 
+% engineers.
+% 
+% Levenberg, E. (2016c). Viscoelastic pavement modeling with a 
+% spreadsheet. Proceedings of the Eighth International Conference on 
+% Maintenance and Rehabilitation of Pavements (mairepav8), 746–755. 
+% doi:10.3850/978-981-11-0449-7-132-cd
 
 clear all, close all, clc
-% -------------------------------------------------------------------------
-% Definition of pavement system
-% -------------------------------------------------------------------------
-
-% y-> x ------------------- Pavement surface ---------------------------- %
-% |                              layer 1      ^      ^       ^
-% v z                                         | z1   |       |
-%                                             v      |       |
-% ---------------------------------------------------|-------|-------------
-%                                layer 2             | z2    |
-%                                                    v       |
-%------------------------------------------------------------|-------------
-%                                                            .
-%                                                            .
-% -------------------------------------------------------------------------
-%                                layer n-1                   .
-% -----------------------------------------------------------|-------------
-%                                layer n                     | infinity
-%                                                            v
-
-% -------------------------------------------------------------------------
-% Definition of coordinate system
-% -------------------------------------------------------------------------
-%                      o Xl (load point)
-%  (z points downwards into the soil)
-%  y -> x            ^  (deformation vector: points towards the load point)
-%  |                /
-%  v z             o Xd (deformation point)
-
 % -------------------------------------------------------------------------
 % Select response analysis type
 % -------------------------------------------------------------------------
