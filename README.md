@@ -40,6 +40,30 @@ The following examples are included in this package:
 
 * 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used softaware at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
 
+
+| Layer    | Thickness (mm) | Youngs moduli (MPa) | Poisson's ratio  |    
+|----------|----------------|---------------------|------------------|
+| 1        |   260          |     5000            |   0.35           |
+| 2        |   500          |      200            |   0.40           |
+| 3        |   &infin;      |       50            |   0.45           |
+
+<p>
+<b>Table 1</b>: Reference pavement system
+</p>
+
+| Load     | Radius (mm)    | Pressure, q (MPa) | x-position (mm) |  y-position (mm) |    
+|----------|----------------|-------------------|-----------------|------------------|
+| Single   |   150.8        |     0.7           |      0          |   0              |
+| Dual (1) |   106.6        |     0.7           |   -170          |   0              |
+| Dual (2) |   106.6        |     0.7           |    170          |   0              |
+
+
+<p>
+<b>Table 2</b>: Load cases 
+</p>
+
+
+<p>
 | Response, R | Description                                        |
 |-------------|----------------------------------------------------|
 | R1          | Vertical stress surface at center of load          | 
@@ -50,16 +74,21 @@ The following examples are included in this package:
 | R6          | Horizontal strain bottom layer 1 at edge of load   | 
 | R7          | Vertical strain top layer 2 at edge of load        | 
 | R8          | Vertical strain top layer 3 at edge of load        |
+</p>
+<p>
+<b>Table 2</b>: Description of response key-points for validations
+</p>
 
-|    Response:|   R1         R2       R3       R4     R5        R6     R7        R8   |
-|-------------------------------------------------------------------------------------|
-| Software    |                                                                       |
-|-------------------------------------------------------------------------------------|
-| BISAR       |   0.7     -100.5    251.7      185    0.4     -61.9    192.2    177.5 |
-| KENLAYER    |   0.8     -100.5    251.6    185.3    0.3       -62    192.2      177 |
-| GAMES       |   0.7     -100.5    251.6    185.1    0.3     -61.9    192.2    177.5 |
-| ALVA (slip) |   0.7     -100.4    251.6    185.1    0.3     -61.8    192.3    177.5 |
-| ALVA (bond) |   0.7     -100.4    251.6    185.1    0.3     -61.8    192.3    177.5 |
+| Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
+|-------------|---------|----------|---------|---------|-------|----------|---------|--------|
+| BISAR       |   0.7   |  -100.5  |  251.7  |    185  |  0.4  |   -61.9  |  192.2  |  177.5 |
+| KENLAYER    |   0.8   |  -100.5  |  251.6  |  185.3  |  0.3  |     -62  |  192.2  |    177 |
+| GAMES       |   0.7   |  -100.5  |  251.6  |  185.1  |  0.3  |   -61.9  |  192.2  |  177.5 |
+| ALVA (slip) |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
+| ALVA (bond) |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
+<p>
+<b>Table 3</b>: Reference pavement system subjeceted to a single wheel load - bonded interfaces
+</p>
 
 * `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating  vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
 
