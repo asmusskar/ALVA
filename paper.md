@@ -26,7 +26,7 @@ Although, pavement analysis tools have been developed to address the limitations
 
 To achieve this, some of the most promising numerical techniques that are currently available for effectively solving elastic and linear viscoelastic layered problems have been implemented in a MATLAB computer package. The core algorithm behind this package is based on LET, i.e., the classic formulation for an N-layered half-space [@Burmister:1945a], shown in Figure \ref{fig1}.
 
-![Figure 1: N-Layered half-space model\label{fig1}](images/N_layer.png)
+![Figure 1: N-Layered half-space model\label{fig1}](images/N_layer.png){ width=50% }
 
 In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n</sub>, Poisson’s ratio &Nu;<sub>n</sub>, and layer thickness t<sub>n</sub> (where n denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j</sub>, of interest and for a given set of uniformly distributed circular loadings with load radius, a, and pressure q). In addition ALVA allows users to define horizontally oriented springs operating at the top or bottom layer interfaces to model imperfect interface conditions [@Levenberg:2020a]. Moreover, numerical features for improved code performance, e.g., acceleration techniques to speed computational time for analysis of surface displacements [@Andersen:2020a] and full response analysis [@khazanovich:2007a; @Levenberg:2016a] and extrapolation technique to improve convergence [@Erlingsson:2013a]. An overview of LET model assumptions and solution procedure is given in [@khazanovich:2007a].
 
