@@ -20,15 +20,17 @@ Examples on ‘main.m’ scripts can be found in the _../ALVA/examples_ folder a
 The core algorithm behind this package is based on LET, i.e., the classic formulation for an N-layered half-space, shown below.
 
 <div>
-<img src="images/N_layer.png" width="75%">
+<img src="images/N_layer.png" width="90%">
 </div>
 
-In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus $E_n$, Poisson’s ratio $\nu_n$, and layer thickness $t_n$ (where $n$ denotes the layer number). This model is engaged to calculate the response at any point, A_j$, of interest and for a given set of uniformly distributed circular loadings with load radius, $a$, and pressure $q$). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
+h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
+
+In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus $E_n$, Poisson’s ratio &nu<sub>n, and layer thickness $t_n$ (where $n$ denotes the layer number). This model is engaged to calculate the response at any point, A_j$, of interest and for a given set of uniformly distributed circular loadings with load radius, $a$, and pressure $q$). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
 
 The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet). Viscoelastic layers are associated with a creep compliance and model parameters $D_0$ and $D_\infty$, the short and long time compliances (respectively), and shape parameters $\tau_D$ and $n_D$, controlling the transition between $D_0$ and $D_\infty$. 
 
 <div>
-<img src="images/VE_mesh.png" width="75%">
+<img src="images/VE_mesh.png" width="90%">
 </div>
 
 The load moves in a straight line from $x=-x_0$ (Start) to $x=x_0$ (End). The travel path is decomposed into 'N' intervals $(i=1,…,N)$, each $\Delta x$ long. The point of response evaluation is indicated in the Figure; this point is located near the middle of the travel path (i.e., x-coordinate of zero), at $y$-coordinate $y_0$ and depth $z_0$ below the surface. 
