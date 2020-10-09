@@ -1,14 +1,13 @@
 % DESCRIPTION:
-% This script tests the implementation of the ALVA LET model calculating 
-% vertical stresses and displacements with depth for a half-space subjected
-% to a single circular load.
-% The results are compared to the analytical Boussinesq solution and the 
-% computer programme ELLEA1.
+% This script tests the implementation of the ALVA LET model, calculating 
+% stresses and displacements with depth for a multilayered pavement 
+% subjected to two circular loads utilizing the method proposed. The 
+% results are compared to the computer programme ELLEA1.
 % -------------------------------------------------------------------------
 % References
 % -------------------------------------------------------------------------
-% Levenberg, E. (2016). ELLEA1: Isotropic Layered Elasticity in Excel:
-% Pavement analysis tool for students and engineers
+% Levenberg, E. (2016a). ELLEA1: Isotropic layered elasticity in excel: 
+% Pavement analysis tool for students and engineers.
 
 clear all, close all, clc
 
