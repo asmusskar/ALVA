@@ -1,50 +1,14 @@
 % DESCRIPTION:
 % This script tests the implementation of the ALVA LET model calculating 
 % shear stresses with depth for a half-space subjected to a single circular 
-% load. The results are compared to the computer programme ELLEA1 [1].
+% load. The results are compared to the computer programme ELLEA1.
 % -------------------------------------------------------------------------
 % References
 % -------------------------------------------------------------------------
-%[1] Levenberg, E. (2016). ELLEA1: Isotropic Layered Elasticity in Excel:
-%    Pavement analysis tool for students and engineers
+% Levenberg, E. (2016a). ELLEA1: Isotropic layered elasticity in excel: 
+% Pavement analysis tool for students and engineers.
 
 clear all, close all, clc
-% -------------------------------------------------------------------------
-% Definition of pavement system
-% -------------------------------------------------------------------------
-
-% y-> x ------------------- Pavement surface ---------------------------- %
-% |                              layer 1      ^      ^       ^
-% v z                                         | z1   |       |
-%                                             v      |       |
-% ---------------------------------------------------|-------|-------------
-%                                layer 2             | z2    |
-%                                                    v       |
-%------------------------------------------------------------|-------------
-%                                                            .
-%                                                            .
-% -------------------------------------------------------------------------
-%                                layer n-1                   .
-% -----------------------------------------------------------|-------------
-%                                layer n                     | infinity
-%                                                            v
-
-% -------------------------------------------------------------------------
-% Definition of coordinate system
-% -------------------------------------------------------------------------
-% (x,y)-plane:             Pavement surface     
-% z-direction:             Pavement depth              
-% Xl_i = (xl_i,yl_i):      Coordinates of load i on pavement surface
-% Xd_i = (xd_i,yd_i,zd_i): Coordinates of deformation point i
-%
-%                | Load 1 (Xl_1)              |  Load 2 (Xl_2)
-%                v                            v
-% y-> x  ------^----------Pavement surface --------------------------------
-% |             \                            ^
-% v z    ^      o  Xd_1 (deformation point 1) \
-%       /                                      o Xd_3 (deformation point 3)
-%      0 Xd_2 (deformation point 2)   
-
 % -------------------------------------------------------------------------
 % Select response analysis type
 % -------------------------------------------------------------------------
