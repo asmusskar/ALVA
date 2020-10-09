@@ -7,18 +7,15 @@ Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement m
 <img src="images/Roadmap_ALVA.png" width="90%">
 </div>
 
-The components of the ALVA software (shown in the Figure) is briefly described below:
-* `main.m` - main script for defining vehicle loading conditions, pavement structure geometry and material properties, numerical parameters (for balancing accuracy and efficiency), analysis type and evaluation points (i.e., location of the output response), and post-processing of the results.
-
 The core algorithm behind this package is based on LET, i.e., the classic formulation for an N-layered half-space, shown below.
 
 <div>
 <img src="images/N_layer.png" width="75%">
 </div>
 
-In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus $E_n$, Poisson’s ratio $\nu_n$, and layer thickness $t_n$ (where $n$ denotes the layer number). This model is engaged to calculate the response at any point, A_j$, of interest and for a given set of uniformly distributed circular loadings with load radius, $a$, and pressure $q$). An overview of LET model assumptions and solution procedure is given in [@khazanovich:2007a].
+In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus $E_n$, Poisson’s ratio $\nu_n$, and layer thickness $t_n$ (where $n$ denotes the layer number). This model is engaged to calculate the response at any point, A_j$, of interest and for a given set of uniformly distributed circular loadings with load radius, $a$, and pressure $q$). An overview of LET model assumptions and solution procedure is given in [khazanovich et al. (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
 
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [@Levenberg:2016c]. Viscoelastic layers are associated with a creep compliance and model parameters $D_0$ and $D_\infty$, the short and long time compliances (respectively), and shape parameters $\tau_D$ and $n_D$, controlling the transition between $D_0$ and $D_\infty$. 
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet). Viscoelastic layers are associated with a creep compliance and model parameters $D_0$ and $D_\infty$, the short and long time compliances (respectively), and shape parameters $\tau_D$ and $n_D$, controlling the transition between $D_0$ and $D_\infty$. 
 
 <div>
 <img src="images/VE_mesh.png" width="75%">
@@ -26,6 +23,8 @@ The viscoelastic response is approximated based on the LET calculations utilizin
 
 The load moves in a straight line from $x=-x_0$ (Start) to $x=x_0$ (End). The travel path is decomposed into $N$ intervals $(i=1,…,N)$, each $\Delta x$ long. The point of response evaluation is indicated in the Figure; this point is located near the middle of the travel path (i.e., $x$-coordinate of zero), at $y$-coordinate $y_0$ and depth $z_0$ below the surface. 
 
+The components of the ALVA software (shown in the Figure) is briefly described below:
+* `main.m` - main script for defining vehicle loading conditions, pavement structure geometry and material properties, numerical parameters (for balancing accuracy and efficiency), analysis type and evaluation points (i.e., location of the output response), and post-processing of the results.
 * `init_LET.m` - initialize the analysis of a layered elastic half space selecting between: (a) `let_response_full.m` - evaluates the response (displacements, stresses and strains) of a layered elastic half-space model or (b) `let_response_polfit.m` - evaluates the displacements of a layered elastic half space model at the surface only. 
 * `init_LET.m` also works as an interface application for simulating moving loads in the *Viscoelastic module*; based on the asphalt material properties from `VE_moduli.m` the module is engaged to calculate the elastic responses in `VE_response.m`, which is subsequently used to predict the linear viscoelastic response of a moving vehicle in `VE_simulation.m`.
 * The main support functions in `init_LET.m` are (a) `arb_funct.m` - evaluates the coefficients of integration that embody the layered system properties and connectivity and (b) `numint_coeff.m` – organizes the integration points and weights for numerical integration for the user defined number of Bessel roots from `besselroots.m` and gauss points and weights between Bessel roots from `lookup_gauss.m`.
