@@ -48,7 +48,7 @@ The following examples are included in this package:
 | 3        |   &infin;      |       50            |   0.45           |
 
 <p>
-<b>Table 1</b>: Reference pavement system
+<b>Table 1</b>: Reference pavement system used used in basic validation.
 </p>
 
 | Load     | Radius (mm)    | Pressure, q (MPa) | x-position (mm) |  y-position (mm) |    
@@ -59,24 +59,22 @@ The following examples are included in this package:
 
 
 <p>
-<b>Table 2</b>: Load cases 
+<b>Table 2</b>: Load cases used in basic validation. 
 </p>
 
+| Response    | Description                                        | Unit   |
+|-------------|----------------------------------------------------|--------|
+| R1          | Vertical stress surface at center of load          | MPa    |
+| R2          | Horizontal strain bottom layer 1 at center of load | micron |
+| R3          | Vertical strain top layer 2 at center of load      | micron |
+| R4          | Vertical strain top layer 3 at center of load      | micron |
+| R5          | Vertical stress surface at edge of load            | MPa    |
+| R6          | Horizontal strain bottom layer 1 at edge of load   | micron |
+| R7          | Vertical strain top layer 2 at edge of load        | micron |
+| R8          | Vertical strain top layer 3 at edge of load        | micron |
 
 <p>
-| Response, R | Description                                        |
-|-------------|----------------------------------------------------|
-| R1          | Vertical stress surface at center of load          | 
-| R2          | Horizontal strain bottom layer 1 at center of load |
-| R3          | Vertical strain top layer 2 at center of load      | 
-| R4          | Vertical strain top layer 3 at center of load      | 
-| R5          | Vertical stress surface at edge of load            | 
-| R6          | Horizontal strain bottom layer 1 at edge of load   | 
-| R7          | Vertical strain top layer 2 at edge of load        | 
-| R8          | Vertical strain top layer 3 at edge of load        |
-</p>
-<p>
-<b>Table 2</b>: Description of response key-points for validations
+<b>Table 2</b>: Description of response key-points used in basic validation.
 </p>
 
 | Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
@@ -87,7 +85,18 @@ The following examples are included in this package:
 | ALVA (slip) |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
 | ALVA (bond) |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
 <p>
-<b>Table 3</b>: Reference pavement system subjeceted to a single wheel load - bonded interfaces
+<b>Table 3</b>: Reference pavement system subjeceted to a single wheel load - bonded interfaces.
+</p>
+
+| Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
+|-------------|---------|----------|---------|---------|-------|----------|---------|--------|
+| BISAR       |   0.7   |    -120  |    1    |   217   | 0.4    |   -78   |  -10    |  205 |
+| KENLAYER    |   0.7   |    -120  |    1    |   216   |   0    |   -78   |  -10    |  205 |
+| GAMES       |   0.7   |    -119  |   11    |   217   |   0    |   -77   |   -1    |  205 |
+| ALVA (slip) |   0.7   |  -119.5  |  0.7    | 216.5   | 0.3    | -77.8   | -9.7    |204.7 |
+
+<p>
+<b>Table 3</b>: Reference pavement system subjeceted to a single wheel load - unbonded interface between laye 1 and 2, bonded interface between layer 2 and 3.
 </p>
 
 * `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating  vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
