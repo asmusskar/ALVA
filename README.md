@@ -62,8 +62,6 @@ The following examples are included in this package:
 | Single   |   150.8        |     0.7           |      0          |   0              |
 | Dual (1) |   106.6        |     0.7           |   -170          |   0              |
 | Dual (2) |   106.6        |     0.7           |    170          |   0              |
-
-
 <p>
 <b>Table 2</b>: Load cases used in basic validation. 
 </p>
@@ -161,15 +159,27 @@ The following examples are included in this package:
 </div>
 
 ## User cases
-# Case 1 - Backcalculation
+### Case 1 - Backcalculation
 * `ALVA_let_backcalculation.m` - tests the implementation of the ALVA LET model for inferring layer moduli, or so called "backcalculation" of layer moduli, based on Falling Weight Deflectometer (FWD) measurements.
 
-# Input 
+#### Input 
 
-| Geophone                    |   G1    |     G2   |    G3    |    G4    |   G5    |     G6   |    G7     |    G8   | G9     |
-| Location along x-axis (mm): |   R1    |    200   |    300   |    450   |  600    |    900   |  1200     |   1500  |  1800  |
+| Load     | Radius (mm)    | Pressure, q (MPa) | x-position (mm) |  y-position (mm) |    
+|----------|----------------|-------------------|-----------------|------------------|
+| Single   |   150       |     0.7           |      0          |   0              |
 
+<p>
+<b>Table 7</b>: Falling Weight Deflectometer load. 
+</p>
 
+| Geophone                       ---|   G1    |     G2   |    G3    |    G4    |   G5    |     G6   |    G7     |    G8   | G9     |
+|-----------------------------------|---------|----------|----------|----------|---------|----------|-----------|---------|--------|
+| Location along x-axis (mm):       |   R1    |    200   |    300   |    450   |  600    |    900   |  1200     |   1500  |  1800  |
+| Displacement measurement (&mu;m): | 298.9   |    244.2 |    220.07|    175.0 | 138.0   |   97.3   |   72.2    |     57.4|    47.6|
+
+<p>
+<b>Table 8</b>: Sensor location and displacement measurements.
+</p>
 
 ## Installation
 * Download the package on your PC. 
