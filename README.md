@@ -47,7 +47,7 @@ The following examples are included in this package:
 ### Case 1 - Basic vailidation at critical points in the pavemenet system (benchmark results)
 In this section a basic validation of the ALVA package is presented, comparing ALVA repsonses to the [Advanced Models for Analytical Design of European Pavement Structures (AMADEUS, 2000)](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures) report for benchmarking. As part of the AMADEUS study a number of popular response models were compared against the standard pavement structure shown in <b>Table 1</b>. Three packages, [BISAR](https://trid.trb.org/view/683379), [KENLAYER](https://www.webpages.uidaho.edu/ce475/files/software%20files/software.htm) and [GAMES](http://www.jsce.or.jp/committee/pavement/downloads/), that can facilitate layer interface slip situations, were further compared against ALVA for the proposed reference pavement system.
 
-* 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used softaware at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
+* 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used software at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
 
 | Layer    | Thickness (mm) | Youngs moduli (MPa) | Poisson's ratio  |    
 |----------|----------------|---------------------|------------------|
@@ -55,7 +55,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | 2        |   500          |      200            |   0.40           |
 | 3        |   &infin;      |       50            |   0.45           |
 <p>
-<b>Table 1</b>: Reference pavement system used in basic validation.
+<b>Table 1</b>: Reference pavement system used in basic validation of the code.
 </p>
 
 | Load     | Radius (mm)    | Pressure, q (MPa) | x-position (mm) |  y-position (mm) |    
