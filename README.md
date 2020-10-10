@@ -44,6 +44,7 @@ ALVA comes with six validation examples (i.e., `main.m` scripts) comparing ALVA 
 The example files can be found in the in the _../ALVA/examples_ folder and the results obtained with independent codes can be found in the found in the _../ALVA/validation_ folder.  
 The following examples are included in this package:
 
+### Case 1
 * 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used softaware at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
 
 
@@ -125,34 +126,59 @@ The following examples are included in this package:
 <b>Table 6</b>: Reference pavement system subjeceted to a dual wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
 </p>
 
-* `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating  vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
+### Case 2 - Vertical stress and displacements elastic half-space
+* `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
 
 <i>Note</i>: Minimum two layers is required for analysis of pavement systems in ALVA. For analysis of one-layer / half-space systems: select identical parameters for each layer, as well as <i>"bonded"</i> interface conditions 
 
 <div>
 <img src="images/Validation1.png" width="75%">
 </div>
+<p>
+<b>Figure 3</b>: Validation: Half-space model.
+</p>
 
+### Case 3 - Vertical stress and displacements
 * `ALVA_let_validation2.m` - tests the implementation of the ALVA LET model, calculating stresses and displacements with depth for a multilayered pavement subjected to two circular loads utilizing the method proposed. The results are compared to the computer programme [ELLEA1]( https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to).
+
 <div>
 <img src="images/Validation2.png" width="75%">
 </div>
+<p>
+<b>Figure 4</b>: Validation: Multilayered model subjected to dual wheel load.
+</p>
 
+### Case 4 - Surface displacements
 * `ALVA_let_validation3.m` - tests the implementation of the acclerated ALVA LET model, calculating the surface displacements with length for a multilayered pavement subjected to two circular loads utilizing the method proposed in [Andersen et al. (2020)]( https://orbit.dtu.dk/en/publications/efficient-reevaluation-of-surface-displacements-in-a-layered-elas). The results are compared to the computer programme [ELLEA1]( https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to).
+
 <div>
 <img src="images/Validation3.png" width="75%">
 </div>
+<p>
+<b>Figure 5</b>: Validation: Acceleration method for efficient calculation of surface displacements.
+</p>
 
+### Case 5 - Shear stresses
 * `ALVA_let_validation4.m` - tests the implementation of the ALVA LET model calculating shear stresses with depth for a half-space subjected to a single circular load. The results are compared to the computer programme [ELLEA1]( https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to).
+
 <div>
 <img src="images/Validation4.png" width="75%">
 </div>
+<p>
+<b>Figure 5</b>: Validation: Shear stresses multilayered model subjected to single wheel load.
+</p>
 
+### Case 6 - Strains
 * `ALVA_let_validation5.m` - tests the implementation of the ALVA LET model calculating shear strain with depth for a multilayered pavement subjected to two circular loads. The results are compared to the computer programme [ELLEA1]( https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to).
+
 <div>
 <img src="images/Validation6.png" width="75%">
 </div>
+<p>
+<b>Figure 6</b>: Validation: Strains in multilayered model subjected to a dual wheel load.
+</p>
 
+### Case 7 - Viscoelastic model 
 * `ALVA_visco_validation1.m` - tests the implementation of the ALVA VE model, calculating the displacements for a single evaluation point on the surface of a multilayered pavement considering a single circular load. The results are compared to the computer programme [ELLVA1]( https://orbit.dtu.dk/en/publications/ellva1-isotropic-layered-viscoelasticity-in-excel-moving-load-adv), see details in [Levenberg (2016)]( https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet).
 <div>
 <img src="images/Validation5.png" width="75%">
@@ -169,7 +195,7 @@ The following examples are included in this package:
 | Single   |   150       |     0.7           |      0          |   0              |
 
 <p>
-<b>Table 7</b>: Falling Weight Deflectometer load. 
+<b>Table 7</b>: Falling Weight Deflectometer (FWD) load. 
 </p>
 
 | Geophone                       ---|   G1    |     G2   |    G3    |    G4    |   G5    |     G6   |    G7     |    G8   | G9     |
@@ -179,6 +205,14 @@ The following examples are included in this package:
 
 <p>
 <b>Table 8</b>: Sensor location and displacement measurements.
+</p>
+
+<div>
+<img src="images/backcalc1.png" width="75%">
+</div>
+
+<p>
+<b>Figure 8</b>: Sensor location and displacement measurements.
 </p>
 
 ## Installation
