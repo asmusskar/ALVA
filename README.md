@@ -71,14 +71,14 @@ The following examples are included in this package:
 | Name        | Response                                   | Location                   | Unit   |
 |-------------|--------------------------------------------|----------------------------|--------|
 | R1          | Vertical stress at surface                 | Load center                | MPa    |
-| R2          | Horizontal strain at the bottom of layer 1 |                            | micron |
-| R3          | Vertical strain at the top of layer 2      |                            | micron |
-| R4          | Vertical strain at the top of layer 3      |                            | micron |
+| R2          | Horizontal strain at the bottom of layer 1 | ''                         | micron |
+| R3          | Vertical strain at the top of layer 2      | ''                           | micron |
+| R4          | Vertical strain at the top of layer 3      | ''                           | micron |
 |-------------|--------------------------------------------|----------------------------|--------|
-| R1          | Vertical stress at surface                 | Edge of load               | MPa    |
-| R2          | Horizontal strain at the bottom of layer 1 |                            | micron |
-| R3          | Vertical strain at the top of layer 2      |                            | micron |
-| R4          | Vertical strain at the top of layer 3      |                            | micron |
+| R5          | Vertical stress at surface                 | Edge of load               | MPa    |
+| R6          | Horizontal strain at the bottom of layer 1 | ''                           | micron |
+| R7          | Vertical strain at the top of layer 2      | ''                           | micron |
+| R8          | Vertical strain at the top of layer 3      | ''                           | micron |
 <p>
 <b>Table 2</b>: Description of response key-points used in basic validation.
 </p>
