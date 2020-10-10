@@ -49,7 +49,6 @@ In this section a basic validation of the ALVA package is presented, comparing A
 
 * 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used softaware at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
 
-
 | Layer    | Thickness (mm) | Youngs moduli (MPa) | Poisson's ratio  |    
 |----------|----------------|---------------------|------------------|
 | 1        |   260          |     5000            |   0.35           |
@@ -126,6 +125,8 @@ In this section a basic validation of the ALVA package is presented, comparing A
 </p>
 
 ### Case 2 - Vertical stresses and displacements for an elastic half-space with depth
+Another basic validation step is carried by comparing vertical stresses and displacements in the line of loading with depth to the classical Boussinesq solution.
+
 * `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
 
 <i>Note</i>: Minimum two layers is required for analysis of pavement systems in ALVA. For analysis of one-layer / half-space systems: select identical parameters for each layer, as well as <i>"bonded"</i> interface conditions 
@@ -192,6 +193,13 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 
 #### Input 
 
+<div>
+<img src="images/FWD.png" width="75%">
+</div>
+<p>
+<b>Figure 8</b>: Typical load and measurement configuration for a Falling Weight Deflectometer (FWD) test.
+</p>
+
 | Layer    | Thickness (mm) | Youngs moduli (MPa) | Poisson's ratio  |    
 |----------|----------------|---------------------|------------------|
 | 1        |   161          |      ?              |   0.35           |
@@ -221,15 +229,21 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 
 ALVA 'Bonded'              |  ALVA 'Frictionless'
 :-------------------------:|:-------------------------:
-![](images/backcalc1.png)  |  ![](images/backcalc2.png)
+![](images/backcalc1.png)  |  ![](images/backcalc1_f0.png)
 
 <p>
-<b>Figure 8</b>: Predicted versus measured pavement displacements.
+<b>Figure 9</b>: Predicted versus measured pavement displacements.
 </p>
 
+| Layer    | Thickness (mm) | Young's moduli (MPa) | Poisson's ratio  |    
+|----------|----------------|----------------------|-------------------|
+| 1        |   161          |    4885   |  2828    |   0.35            |
+| 2        |   260          |     314   |  2392    |   0.35            |
+| 3        |   &infin;      |     179   |  162     |   0.35            |
+<p>
+<b>Table 10</b>: Backcalculated Young's moduli. 
+</p>
 
-2.8275    2.3919    0.1796
-4.8848    0.3141    0.1621
 
 ## Installation
 * Download the package on your PC. 
