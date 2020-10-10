@@ -160,8 +160,20 @@ The following examples are included in this package:
 <img src="images/Validation5.png" width="75%">
 </div>
 
+## User cases
+# Case 1 - Backcalculation
+* `ALVA_let_backcalculation.m` - tests the implementation of the ALVA LET model for inferring layer moduli, or so called "backcalculation" of layer moduli, based on Falling Weight Deflectometer (FWD) measurements.
+
+# Input 
+
+| Geophone                    |   G1    |     G2   |    G3    |    G4    |   G5    |     G6   |    G7     |    G8   | G9     |
+| Location along x-axis (mm): |   R1    |    200   |    300   |    450   |  600    |    900   |  1200     |   1500  |  1800  |
+
+
+
 ## Installation
 * Download the package on your PC. 
 * Open MATLAB
 * Go to the directory 'ALVA'
 * add the different directories of the ALVA on your MATLAB path — Now you are ready to run the validation examples provided and generate your own analysis. 
+* ALAVA is compatible with [OCTAVE](https://www.gnu.org/software/octave/index)
