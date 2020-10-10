@@ -44,7 +44,7 @@ ALVA comes with six validation examples (i.e., `main.m` scripts) comparing ALVA 
 The example files can be found in the in the _../ALVA/examples_ folder and the results obtained with independent codes can be found in the found in the _../ALVA/validation_ folder.  
 The following examples are included in this package:
 
-### Case 1
+### Case 1 - Basic vailidation at critical points in the pavemenet (benchmark results)
 * 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used softaware at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
 
 
@@ -126,7 +126,7 @@ The following examples are included in this package:
 <b>Table 6</b>: Reference pavement system subjeceted to a dual wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
 </p>
 
-### Case 2 - Vertical stress and displacements elastic half-space
+### Case 2 - Vertical stresses and displacements for an elastic half-space with depth
 * `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
 
 <i>Note</i>: Minimum two layers is required for analysis of pavement systems in ALVA. For analysis of one-layer / half-space systems: select identical parameters for each layer, as well as <i>"bonded"</i> interface conditions 
@@ -138,7 +138,7 @@ The following examples are included in this package:
 <b>Figure 3</b>: Validation: Half-space model.
 </p>
 
-### Case 3 - Vertical stress and displacements
+### Case 3 - Vertical and horizontal stresses and displacements with depth 
 * `ALVA_let_validation2.m` - tests the implementation of the ALVA LET model, calculating stresses and displacements with depth for a multilayered pavement subjected to two circular loads utilizing the method proposed. The results are compared to the computer programme [ELLEA1]( https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to).
 
 <div>
