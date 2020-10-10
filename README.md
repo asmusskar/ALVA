@@ -64,7 +64,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | Dual (1) |   106.6        |     0.7           |   -170          |   0              |
 | Dual (2) |   106.6        |     0.7           |    170          |   0              |
 <p>
-<b>Table 2</b>: Load cases used in basic validation. 
+<b>Table 2</b>: Load cases used for basic validation of the code. 
 </p>
 
 | Name        | Response                                   | Location                   | Unit   |
@@ -79,7 +79,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | R7          | Vertical strain at the top of layer 2      | ''                           | micron |
 | R8          | Vertical strain at the top of layer 3      | ''                           | micron |
 <p>
-<b>Table 2</b>: Description of response key-points used in basic validation.
+<b>Table 2</b>: Description of key-point responses used for basic validation of the code. 
 </p>
 
 | Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
@@ -87,8 +87,8 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | BISAR       |   0.7   |  -100.5  |  251.7  |    185  |  0.4  |   -61.9  |  192.2  |  177.5 |
 | KENLAYER    |   0.8   |  -100.5  |  251.6  |  185.3  |  0.3  |     -62  |  192.2  |    177 |
 | GAMES       |   0.7   |  -100.5  |  251.6  |  185.1  |  0.3  |   -61.9  |  192.2  |  177.5 |
-| ALVA (slip) |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
-| ALVA (bond) |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
+| ALVA ('Slip') |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
+| ALVA ('Bonded') |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
 <p>
 <b>Table 3</b>: Reference pavement system subjeceted to a single wheel load - bonded interfaces.
 </p>
@@ -98,7 +98,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | BISAR       |   0.7   |    -120  |    1    |   217   | 0.4    |   -78   |  -10    |  205 |
 | KENLAYER    |   0.7   |    -120  |    1    |   216   |   0    |   -78   |  -10    |  205 |
 | GAMES       |   0.7   |    -119  |   11    |   217   |   0    |   -77   |   -1    |  205 |
-| ALVA (slip) |   0.7   |  -119.5  |  0.7    | 216.5   | 0.3    | -77.8   | -9.7    |204.7 |
+| ALVA ('Slip') |   0.7   |  -119.5  |  0.7    | 216.5   | 0.3    | -77.8   | -9.7    |204.7 |
 <p>
 <b>Table 4</b>: Reference pavement system subjeceted to a single wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
 </p>
@@ -108,8 +108,8 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | BISAR       |   0.7   |    N/A   | 186     |  170    |0      |   N/A    |  182    |  177   |
 | KENLAYER    |   1.5   |    -85   | 186     |  170    |0      |   -89    |  183    |  177   |
 | GAMES       |   0.7   |    -85   | 186     |  170    |0      |   -89    |  183    |  177   |
-| ALVA (slip) |   0.7   |  -84.9   | 186     | 169.7   | 0     |  -88.8   | 183.2   | 177.2  |
-| ALVA (bond) |   0.7   |  -84.9   | 186     | 169.7   | 0     |  -88.8   | 183.2   | 177.2  |
+| ALVA ('Slip') |   0.7   |  -84.9   | 186     | 169.7   | 0     |  -88.8   | 183.2   | 177.2  |
+| ALVA ('Bonded') |   0.7   |  -84.9   | 186     | 169.7   | 0     |  -88.8   | 183.2   | 177.2  |
 <p>
 <b>Table 5</b>: Reference pavement system subjeceted to a dual wheel load - bonded interfaces.
 </p>
@@ -119,7 +119,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | BISAR       |   0.7   |     N/A  |     9   |   193   | 0     |   N/A    |  -12    |   204  |
 | KENLAYER    |   0.7   |    -120  |    -1   |   216   | 0     |   -78    |  -10    |   205  |
 | GAMES       |   0.7   |    -101  |    -3   |   194   | 0     |  -106    |    1    |   205  |
-| ALVA (slip) |   0.7   |  -102.6  |  -9.2   | 193.4   | 0     |  -107    |-11.5    | 204.1  |
+| ALVA ('Slip') |   0.7   |  -102.6  |  -9.2   | 193.4   | 0     |  -107    |-11.5    | 204.1  |
 <p>
 <b>Table 6</b>: Reference pavement system subjeceted to a dual wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
 </p>
@@ -129,7 +129,7 @@ Another basic validation step is carried by comparing vertical stresses and disp
 
 * `ALVA_let_validation1.m` - tests the implementation of the ALVA LET model calculating vertical stresses and displacements with depth for a half-space subjected to a single circular load. The results are compared to the analytical Boussinesq solution and the computer programme [ELLEA1](https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to). 
 
-<i>Note</i>: Minimum two layers is required for analysis of pavement systems in ALVA. For analysis of one-layer / half-space systems: select identical parameters for each layer, as well as <i>"bonded"</i> interface conditions 
+<i>Note</i>: Minimum two layers is required for analysis of pavement systems in ALVA. For analysis of one-layer / half-space systems - select identical parameters for each layer, as well as <i>"bonded"</i> interface conditions 
 
 <div>
 <img src="images/Validation1.png" width="75%">
@@ -206,7 +206,7 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 | 2        |   260          |      ?              |   0.35            |
 | 3        |   &infin;      |      ?              |   0.35            |
 <p>
-<b>Table 7</b>: Measured pavement tickness. 
+<b>Table 7</b>: Measured pavement ticknesses. 
 </p>
 
 | Load     | Radius (mm)    | Pressure, q (MPa) | x-position (mm) |  y-position (mm) |    
@@ -219,7 +219,7 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 
 | Geophone                          |   G1    |     G2   |    G3    |    G4    |   G5    |     G6   |    G7     |    G8   | G9     |
 |-----------------------------------|---------|----------|----------|----------|---------|----------|-----------|---------|--------|
-| Location along x-axis (mm):       |   R1    |    200   |    300   |    450   |  600    |    900   |  1200     |   1500  |  1800  |
+| Location along x-axis (mm):       |   0     |    200   |    300   |    450   |  600    |    900   |  1200     |   1500  |  1800  |
 | Displacement measurement (&mu;m): | 298.9   |    244.2 |    220.07|    175.0 | 138.0   |   97.3   |   72.2    |     57.4|    47.6|
 
 <p>
@@ -235,11 +235,11 @@ ALVA 'Bonded'              |  ALVA 'Frictionless'
 <b>Figure 9</b>: Predicted versus measured pavement displacements.
 </p>
 
-| Layer    | Thickness (mm) | Young's moduli (MPa) | Poisson's ratio  |    
-|----------|----------------|----------------------|-------------------|
-| 1        |   161          |    4885   |  2828    |   0.35            |
-| 2        |   260          |     314   |  2392    |   0.35            |
-| 3        |   &infin;      |     179   |  162     |   0.35            |
+| Layer    | Thickness (mm) | Young's moduli (MPa) - 'Bonded' | Young's moduli (MPa) - 'Frictionless' | Poisson's ratio   |    
+|----------|----------------|---------------------------------|---------------------------------------|-------------------|
+| 1        |   161          |    4885                         |  2828                                 |   0.35            |
+| 2        |   260          |     314                         |  2392                                 |   0.35            |
+| 3        |   &infin;      |     179                         |  162                                  |   0.35            |
 <p>
 <b>Table 10</b>: Backcalculated Young's moduli. 
 </p>
