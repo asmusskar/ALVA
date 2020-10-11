@@ -195,7 +195,7 @@ In this section we present relevant user examples with ALVA.
 ### Example 1 - Backcalculation of layer moduli
 `ALVA_let_backcalculation.m` - tests the implementation of the ALVA LET model for inferring layer moduli, or so called "backcalculation" of layer moduli, based on Falling Weight Deflectometer (FWD) measurements. The measurements was carried at DTU Lyngby Campus, Denmark Summer 2019. 
 
-The support script `inv_loop.m` was developed for this specific example. Moreover, for this optimisation problem, the `fminseacrh.m` function in MATLAB was utilized, i.e., the [Nelder–Mead simplex (NMS)](https://academic.oup.com/comjnl/article-abstract/7/4/308/354237) multidimensional optimisation algorithm. 
+The support script `inv_loop.m` was developed for this specific example. Moreover, for this optimisation problem, the `fminsearch.m` function in MATLAB was utilized, i.e., the [Nelder–Mead simplex (NMS)](https://academic.oup.com/comjnl/article-abstract/7/4/308/354237) multidimensional optimisation algorithm. 
 
 #### Input 
 
