@@ -47,16 +47,15 @@ The viscoelastic response is approximated based on the LET calculations utilizin
 
 The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x<sub>0</sub></i> (End). The travel path is decomposed into <i>N</i> intervals (<i>i=1,…,N</i>), each <i>&Delta;x</i> long. The point of response evaluation <i>A<sub>j</sub></i> is indicated in the Figure; this point is located near the middle of the travel path (i.e., <i>x</i>-coordinate of zero), at <i>y</i>-coordinate <i>y<sub>0</sub></i> and depth <i>z<sub>0</sub></i> below the surface. 
 
-## Validation examples
-ALVA comes with six validation examples (i.e., `main.m` scripts) comparing ALVA to existing codes and analytical formulations. 
+## Validation cases
+ALVA comes with six validation cases/examples (i.e., `main.m` scripts), comparing ALVA to existing pavement analysis sofware and analytical formulations. 
 The example files can be found in the in the _../ALVA/examples_ folder and the results obtained with independent codes can be found in the found in the _../ALVA/validation_ folder.  
-The following examples are included in this package:
 
 ### Case 1 - Basic vailidation at critical points in the pavemenet system (benchmark results)
 In this section a basic validation of the ALVA package is presented, comparing ALVA repsonses to the [Advanced Models for Analytical Design of European Pavement Structures (AMADEUS, 2000)](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures) report for benchmarking. As part of the AMADEUS study a number of popular response models were compared against the standard pavement structure shown in <b>Table 1</b>. Three packages, [BISAR](https://trid.trb.org/view/683379), [KENLAYER](https://www.webpages.uidaho.edu/ce475/files/software%20files/software.htm) and [GAMES](http://www.jsce.or.jp/committee/pavement/downloads/), that can facilitate layer interface slip situations, were further compared against ALVA for the proposed reference pavement system.
-<p>
+
 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used software at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
-</p>
+
 | Layer    | Thickness (mm) | Youngs moduli (MPa) | Poisson's ratio  |    
 |----------|----------------|---------------------|------------------|
 | 1        |   260          |     5000            |   0.35           |
@@ -196,6 +195,8 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 </div>
 
 ## User cases
+In this section we present various user cases
+
 ### Example 1 - Backcalculation of layer moduli
 `ALVA_let_backcalculation.m` - tests the implementation of the ALVA LET model for inferring layer moduli, or so called "backcalculation" of layer moduli, based on Falling Weight Deflectometer (FWD) measurements.
 
