@@ -60,7 +60,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 <b>Table 1</b>: Reference pavement system used in basic validation of the code.
 </p>
 
-| Load     | Radius (mm)    | Pressure, q (MPa) | x-position (mm) |  y-position (mm) |    
+| Load     | Radius (mm)    | Pressure, <i>q</i> (MPa) | <i>x</i>-position (mm) |  <i>y</i>-position (mm) |    
 |----------|----------------|-------------------|-----------------|------------------|
 | Single   |   150.8        |     0.7           |      0          |   0              |
 | Dual (1) |   106.6        |     0.7           |   -170          |   0              |
@@ -170,7 +170,7 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 <img src="images/Validation4.png" width="75%">
 </div>
 <p>
-<b>Figure 5</b>: Validation: Shear stresses multilayered model subjected to single wheel load.
+<b>Figure 5</b>: Validation: Shear stresses in multilayered model subjected to single wheel load.
 </p>
 
 ### Case 6 - Shear strains
@@ -195,7 +195,7 @@ In this section we present relevant user examples with ALVA.
 ### Example 1 - Backcalculation of layer moduli
 `ALVA_let_backcalculation.m` - tests the implementation of the ALVA LET model for inferring layer moduli, or so called "backcalculation" of layer moduli, based on Falling Weight Deflectometer (FWD) measurements. The measurements was carried at DTU Lyngby Campus, Denmark Summer 2019. 
 
-The support script `inv_loop.m` was developed for this specific example. Moreover, for this optimisation problem, the 'fminsearch.m' function in MATLAB was utilized, i.e., the [Nelder–Mead simplex (NMS)](https://academic.oup.com/comjnl/article-abstract/7/4/308/354237) multidimensional optimisation algorithm. 
+The support script `inv_loop.m` was developed for this specific example. Moreover, for this optimisation problem, the `fminseacrh.m` function in MATLAB was utilized, i.e., the [Nelder–Mead simplex (NMS)](https://academic.oup.com/comjnl/article-abstract/7/4/308/354237) multidimensional optimisation algorithm. 
 
 #### Input 
 
@@ -215,7 +215,7 @@ The support script `inv_loop.m` was developed for this specific example. Moreove
 <b>Table 7</b>: Measured pavement ticknesses. 
 </p>
 
-| Load     | Radius (mm)    | Pressure, q (MPa) | x-position (mm) |  y-position (mm) |    
+| Load     | Radius (mm)    | Pressure, <i>q</i> (MPa) | <i>x</i>-position (mm) |  <i>y</i>-position (mm) |    
 |----------|----------------|-------------------|-----------------|------------------|
 | Single   |   150          |     0.7           |      0          |   0              |
 
