@@ -8,22 +8,17 @@ Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement m
 </div>
 
 The components of the ALVA software (shown in the Figure) is briefly described below:
-<p>
 * `main.m` - main script for defining vehicle loading conditions, pavement structure geometry and material properties, numerical parameters (for balancing accuracy and efficiency), analysis type and evaluation points (i.e., location of the output response), and post-processing of the results. <b>The `main.m` scripts can be found in the ../ALVA/examples_ folder.</b>
-</p>
-<p>
+
 * `init_LET.m` - initialize the analysis of a layered elastic half space selecting between: (a) `let_response_full.m` - evaluates the response (displacements, stresses and strains) of a layered elastic half-space model or (b) `let_response_polfit.m` - evaluates the displacements of a layered elastic half space model at the surface only. 
-</p>
-<p>
+
 * `init_LET.m` also works as an interface application for simulating moving loads in the *Viscoelastic module*; based on the asphalt material properties from `VE_moduli.m` the module is engaged to calculate the elastic responses in `VE_response.m`, which is subsequently used to predict the linear viscoelastic response of a moving vehicle in `VE_simulation.m`.
-</p>
-<p>
+
 * The main support functions in `init_LET.m` are (a) `arb_funct.m` - evaluates the coefficients of integration that embody the layered system properties and connectivity and (b) `numint_coeff.m` – organizes the integration points and weights for numerical integration for the user defined number of Bessel roots from `besselroots.m` and gauss points and weights between Bessel roots from `lookup_gauss.m`.
-</p>
-<p>
+
 * Additional support functions for efficient surface displacement calculations in `let_response_polfit.m` is `arb_func_polfit.m` – interpolates intermediate coefficients of integration, `polfit_int.m` – evaluates coefficient proportional integrals, and `polfit_abc.m` – evaluates coefficients a, b and c for the polynomial.
 Examples on ‘main.m’ scripts can be found in the _../ALVA/examples_ folder and all underlying components (i.e., source files) described above in the _../ALVA/basic_ folder.
-</p>
+
 ## Main input parameters
 The core algorithm behind this package is based on LET, i.e., the classic formulation for an <i>N</i>-layered half-space, shown in <b>Figure 1</b> 
 
@@ -47,11 +42,11 @@ The viscoelastic response is approximated based on the LET calculations utilizin
 
 The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x<sub>0</sub></i> (End). The travel path is decomposed into <i>N</i> intervals (<i>i=1,…,N</i>), each <i>&Delta;x</i> long. The point of response evaluation <i>A<sub>j</sub></i> is indicated in the Figure; this point is located near the middle of the travel path (i.e., <i>x</i>-coordinate of zero), at <i>y</i>-coordinate <i>y<sub>0</sub></i> and depth <i>z<sub>0</sub></i> below the surface. 
 
-## Validation cases
+## Code validation 
 ALVA comes with six validation cases/examples (i.e., `main.m` scripts), comparing ALVA to existing pavement analysis sofware and analytical formulations. 
-The example files can be found in the in the _../ALVA/examples_ folder and the results obtained with independent codes can be found in the found in the _../ALVA/validation_ folder.  
+The files can be found in the in the _../ALVA/examples_ folder and the results obtained with independent codes can be found in the found in the _../ALVA/validation_ folder.  
 
-### Case 1 - Basic vailidation at critical points in the pavemenet system (benchmark results)
+### Case 1 - Basic validation at critical points in the pavemenet system (benchmark results)
 In this section a basic validation of the ALVA package is presented, comparing ALVA repsonses to the [Advanced Models for Analytical Design of European Pavement Structures (AMADEUS, 2000)](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures) report for benchmarking. As part of the AMADEUS study a number of popular response models were compared against the standard pavement structure shown in <b>Table 1</b>. Three packages, [BISAR](https://trid.trb.org/view/683379), [KENLAYER](https://www.webpages.uidaho.edu/ce475/files/software%20files/software.htm) and [GAMES](http://www.jsce.or.jp/committee/pavement/downloads/), that can facilitate layer interface slip situations, were further compared against ALVA for the proposed reference pavement system.
 
 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used software at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
@@ -157,7 +152,7 @@ Another basic validation step is carried by comparing vertical stresses and disp
 </p>
 
 ### Case 4 - Surface displacements
-In situ evaluation of mechanical pavement properties requires fitting measured surface displacements with model displacements. Such inverse analysis is guided by optimisation algorithms that entail reexecution of the underlying model many times over. For layered elasticity, which is the most commonly employed pavement model, this involves calculating computationally demanding semiinfinite integrals in every optimisation step. In this connection, a method was proposed (and implemented into ALVA) to improve the computational efficiency of surface displacement recalculations in layered elastic systems
+In situ evaluation of mechanical pavement properties requires fitting measured surface displacements with model displacements. Such inverse analysis is guided by optimisation algorithms that entail re-execution of the underlying model many times over. For layered elasticity, which is the most commonly employed pavement model, this involves calculating computationally demanding semi-infinite integrals in every optimisation step. In this connection, a method was proposed (and implemented into ALVA) to improve the computational efficiency of surface displacement re-calculations in layered elastic systems.
 
 `ALVA_let_validation3.m` - tests the implementation of the acclerated ALVA LET model, calculating the surface displacements with length for a multilayered pavement subjected to two circular loads utilizing the method proposed in [Andersen et al. (2020)]( https://orbit.dtu.dk/en/publications/efficient-reevaluation-of-surface-displacements-in-a-layered-elas). The results are compared to the computer programme [ELLEA1]( https://orbit.dtu.dk/en/publications/ellea1-isotropic-layered-elasticity-in-excel-pavement-analysis-to).
 
@@ -194,11 +189,13 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 <img src="images/Validation5.png" width="75%">
 </div>
 
-## User cases
-In this section we present various user cases
+## User examples
+In this section we present relevant user examples with ALVA. 
 
 ### Example 1 - Backcalculation of layer moduli
-`ALVA_let_backcalculation.m` - tests the implementation of the ALVA LET model for inferring layer moduli, or so called "backcalculation" of layer moduli, based on Falling Weight Deflectometer (FWD) measurements.
+`ALVA_let_backcalculation.m` - tests the implementation of the ALVA LET model for inferring layer moduli, or so called "backcalculation" of layer moduli, based on Falling Weight Deflectometer (FWD) measurements. The measurements was carried at DTU Lyngby Campus, Denmark Summer 2019. 
+
+The support script `inv_loop.m` was developed for this specific example. Moreover, for this optimisation problem, the 'fminsearch.m' function in MATLAB was utilized, i.e., the [Nelder–Mead simplex (NMS)](https://academic.oup.com/comjnl/article-abstract/7/4/308/354237) multidimensional optimisation algorithm. 
 
 #### Input 
 
