@@ -31,7 +31,11 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
 
 In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n</sub>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness t<sub>n</sub> (where <i>n</i> denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j</sub>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
 
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 2</b>). Viscoelastic layers are associated with a creep compliance and model parameters <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>, the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 2</b>). Viscoelastic layers are associated with a creep compliance of the form [Smith, 1972](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
+
+<i>D(t) = D<sub>&infin;</sub> + <mfrac><mrow> D<sub>0</sub> - D<sub>&infin;</sub> </mrow> <mrow> 1 + (t/&tau;<sub>D</sub>)<sup>n<sub>D</sub></sup></i>
+
+,wherein <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i> are the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
 
 <div>
 <img src="images/VE_mesh.png" width="90%">
@@ -41,10 +45,6 @@ The viscoelastic response is approximated based on the LET calculations utilizin
 </p>
 
 The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x<sub>0</sub></i> (End). The travel path is decomposed into <i>N</i> intervals (<i>i=1,…,N</i>), each <i>&Delta;x</i> long. The point of response evaluation <i>A<sub>j</sub></i> is indicated in the Figure; this point is located near the middle of the travel path (i.e., <i>x</i>-coordinate of zero), at <i>y</i>-coordinate <i>y<sub>0</sub></i> and depth <i>z<sub>0</sub></i> below the surface. 
-
-You can use $$\LaTeX$$ to typeset formulas. A formula can be displayed inline, e.g. $$e=mc^2$$, or as a block:
-$$\int_\Omega \nabla u \cdot \nabla v~dx = \int_\Omega fv~dx$$
-Also check out this [LaTeX introduction](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
 
 ## Code validation 
 ALVA comes with six validation cases/examples (i.e., `main.m` scripts), comparing ALVA to existing pavement analysis sofware and analytical formulations. 
