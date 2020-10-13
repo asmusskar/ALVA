@@ -7,10 +7,10 @@ Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement m
 <img src="images/Roadmap_ALVA.png" width="100%">
 </div>
 <p>
- <b>Figure 1:</b> ALVA roadmap 
+ <b>Figure 1:</b> ALVA roadmap. 
 </p>
 
-The components of the ALVA software (shown in the <b>Figure 1</b>) is briefly described below:
+The components of the ALVA software (see <b>Figure 1</b>) is briefly described below:
 * `main.m` - main script for defining vehicle loading conditions, pavement structure geometry and material properties, numerical parameters (for balancing accuracy and efficiency), analysis type and evaluation points (i.e., location of the output response), and post-processing of the results. <b>The `main.m` scripts can be found in the ../ALVA/examples_ folder.</b>
 
 * `init_LET.m` - initialize the analysis of a layered elastic half space selecting between: (a) `let_response_full.m` - evaluates the response (displacements, stresses and strains) of a layered elastic half-space model or (b) `let_response_polfit.m` - evaluates the displacements of a layered elastic half space model at the surface only. 
@@ -30,7 +30,7 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
 <img src="images/N_layer.png" width="90%">
 </div>
 <p>
- <b>Figure 2:</b><i>N</i>-layered half-space model 
+ <b>Figure 2:</b> <i>N</i>-layered half-space model 
 </p>
 
 In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where <i>n</i> denotes the layer number). In addition ALVA allows users to define horizontally oriented springs, <i>k<sub>h</sub></i>, operating at the top or bottom layer interfaces to model imperfect interface conditions. This model is engaged to calculate the response at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
@@ -66,7 +66,7 @@ alva.bond = 'Bonded';
 <img src="images/bessel1.png" width="90%">
 </div>
 <p>
- <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted and zero points are shown as red circles and gauss points as blue circles for the first interval and green circles for the second interval for N=n=5.
+ <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted and zero points are shown as red circles and gauss points as blue circles for the first interval and green circles for the second interval for 'N'='n'=5.
 </p>
 
 ``` 
@@ -99,11 +99,11 @@ alva.q  = [0.7
 alva.a  = [106.6
            106.6];       % Load radii [mm] (circular load)
 alva.Xl = [-170 0
-           170  0];    % Load positions [mm]: [x1 y1; x2 y2;..xi yi];
+           170  0];      % Load positions [mm]: [x1 y1; x2 y2;..xi yi];
 ``` 
 * Location of evaluation points: (x1 y1 z1; x2 y2 z2;..) 
 
-Response at the edge of one tire load, i.e., x=170 and y=0 with varying depth z = (0,259.99,260.1,760.1), and between tires, i.e.,  x=0 and y=0 with varying depth z = (0,259.99,260.1,760.1)
+Response at the edge of one tire load, i.e., <i>x</i>=170 and <i>y</i>=0 with varying depth <i>z</i>=(0,259.99,260.1,760.1), and between tires, i.e., <i>x</i>=0 and <i>y</i>=0 with varying depth <i>z</i>=(0,259.99,260.1,760.1)
 
 ``` 
 alva.Xd = [170 0 0; 170 0 259.99; 170 0 260.1; 170 0 760.1;
@@ -137,7 +137,7 @@ epsxz = alva.epsxz.*1e6;
 ``` 
 
 ### Layered viscoelastic analysis
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 2</b>). Viscoelastic layers are associated with a creep compliance of the form [(Smith, 1971)](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 6</b>). Viscoelastic layers are associated with a creep compliance of the form [(Smith, 1971)](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" title="D(t)=D_\infty+\frac{D_0-D_\infty}{1+(t/\tau_D)^{n_D}}" /></a>
 
@@ -147,7 +147,7 @@ The viscoelastic response is approximated based on the LET calculations utilizin
 <img src="images/VE_mesh.png" width="90%">
 </div>
 <p>
-<b>Figure 2: </b>Load scheme to simulate movement
+<b>Figure 6: </b>Load scheme to simulate movement
 </p>
 
 The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x<sub>0</sub></i> (End). The travel path is decomposed into <i>N</i> intervals (<i>i=1,…,N</i>), each <i>&Delta;x</i> long. The point of response evaluation <i>A<sub>j</sub></i> is indicated in the Figure; this point is located near the middle of the travel path (i.e., <i>x</i>-coordinate of zero), at <i>y</i>-coordinate <i>y<sub>0</sub></i> and depth <i>z<sub>0</sub></i> below the surface.
@@ -161,7 +161,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 
 'ALVA_bonding_validation1.m' - tests the implementation of the interface spring model, as well as compares the ALVA model with a range of commonly used software at critical positions within the pavament system published by the [European Commission](https://trimis.ec.europa.eu/project/advanced-models-analytical-design-european-pavement-structures).
 
-| Layer    | Thickness (mm) | Youngs moduli (MPa) | Poisson's ratio  |    
+| Layer    | Thickness (mm) | Young's moduli (MPa) | Poisson's ratio  |    
 |----------|----------------|---------------------|------------------|
 | 1        |   260          |     5000            |   0.35           |
 | 2        |   500          |      200            |   0.40           |
@@ -247,7 +247,7 @@ Another basic validation step is carried by comparing vertical stresses and disp
 <img src="images/Validation1.png" width="75%">
 </div>
 <p>
-<b>Figure 3</b>: Validation: Half-space model.
+<b>Figure 7</b>: Validation: Half-space model.
 </p>
 
 ### Case 3 - Vertical and horizontal stresses and displacements with depth
@@ -258,7 +258,7 @@ Another basic validation step is carried by comparing vertical stresses and disp
 <img src="images/Validation2.png" width="75%">
 </div>
 <p>
-<b>Figure 4</b>: Validation: Multilayered model subjected to dual wheel load.
+<b>Figure 8</b>: Validation: Multilayered model subjected to dual wheel load.
 </p>
 
 ### Case 4 - Surface displacements
@@ -270,7 +270,7 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 <img src="images/Validation3.png" width="75%">
 </div>
 <p>
-<b>Figure 5</b>: Validation: Acceleration method for efficient calculation of surface displacements.
+<b>Figure 9</b>: Validation: Acceleration method for efficient calculation of surface displacements.
 </p>
 
 ### Case 5 - Shear stresses
@@ -280,7 +280,7 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 <img src="images/Validation4.png" width="75%">
 </div>
 <p>
-<b>Figure 5</b>: Validation: Shear stresses in multilayered model subjected to single wheel load.
+<b>Figure 10</b>: Validation: Shear stresses in multilayered model subjected to single wheel load.
 </p>
 
 ### Case 6 - Shear strains
@@ -290,14 +290,18 @@ In situ evaluation of mechanical pavement properties requires fitting measured s
 <img src="images/Validation6.png" width="75%">
 </div>
 <p>
-<b>Figure 6</b>: Validation: Strains in multilayered model subjected to a dual wheel load.
+<b>Figure 11</b>: Validation: Strains in multilayered model subjected to a dual wheel load.
 </p>
 
 ### Case 7 - Viscoelastic model (time dependent material behaviour)
 * `ALVA_visco_validation1.m` - tests the implementation of the ALVA VE model, calculating the displacements for a single evaluation point on the surface of a multilayered pavement considering a single circular load. The results are compared to the computer programme [ELLVA1]( https://orbit.dtu.dk/en/publications/ellva1-isotropic-layered-viscoelasticity-in-excel-moving-load-adv), see details in [Levenberg (2016)]( https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet).
+
 <div>
 <img src="images/Validation5.png" width="75%">
 </div>
+<p>
+<b>Figure 12</b>: Validation: Surface displacements for a single evaluation point subjected to a moving load. 
+</p>
 
 ## User examples
 In this section we present relevant user examples with ALVA. 
@@ -313,7 +317,7 @@ The support script `inv_loop.m` was developed for this specific example. Moreove
 <img src="images/FWD.png" width="75%">
 </div>
 <p>
-<b>Figure 8</b>: Principle of operation for the Falling Weight Deflectometer (FWD) test: load and measurement configuration
+<b>Figure 13</b>: Principle of operation for the Falling Weight Deflectometer (FWD) test: load and measurement configuration
 </p>
 
 | Layer    | Thickness (mm) | Youngs moduli (MPa) | Poisson's ratio  |    
@@ -348,7 +352,7 @@ ALVA 'Bonded'              |  ALVA 'Frictionless'
 ![](images/backcalc1.png)  |  ![](images/backcalc1_f0.png)
 
 <p>
-<b>Figure 9</b>: Predicted versus measured pavement displacements.
+<b>Figure 14</b>: Predicted versus measured pavement displacements.
 </p>
 
 | Layer    | Thickness (mm) | Young's moduli (MPa) - 'Bonded' | Young's moduli (MPa) - 'Frictionless' | Poisson's ratio   |    
