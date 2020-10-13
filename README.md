@@ -6,8 +6,11 @@ Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement m
 <div>
 <img src="images/Roadmap_ALVA.png" width="100%">
 </div>
+<p>
+ <b>Figure 1:</b> ALVA roadmap 
+</p>
 
-The components of the ALVA software (shown in the Figure) is briefly described below:
+The components of the ALVA software (shown in the <b>Figure 1</b>) is briefly described below:
 * `main.m` - main script for defining vehicle loading conditions, pavement structure geometry and material properties, numerical parameters (for balancing accuracy and efficiency), analysis type and evaluation points (i.e., location of the output response), and post-processing of the results. <b>The `main.m` scripts can be found in the ../ALVA/examples_ folder.</b>
 
 * `init_LET.m` - initialize the analysis of a layered elastic half space selecting between: (a) `let_response_full.m` - evaluates the response (displacements, stresses and strains) of a layered elastic half-space model or (b) `let_response_polfit.m` - evaluates the displacements of a layered elastic half space model at the surface only. 
@@ -21,16 +24,16 @@ Examples on ‘main.m’ scripts can be found in the _../ALVA/examples_ folder a
 
 ## Main input parameters
 ### Layered elastic analysis
-The core algorithm behind this package is based on LET, i.e., the classic formulation for an <i>N</i>-layered half-space, shown in <b>Figure 1</b> 
+The core algorithm behind this package is based on LET, i.e., the classic formulation for an <i>N</i>-layered half-space, shown in <b>Figure 2</b> 
 
 <div>
 <img src="images/N_layer.png" width="90%">
 </div>
 <p>
- <b>Figure 1: </b><i>N</i>-layered half-space model 
+ <b>Figure 2:</b><i>N</i>-layered half-space model 
 </p>
 
-In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n</sub>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness t<sub>n</sub> (where <i>n</i> denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j</sub>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
+In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where <i>n</i> denotes the layer number). In addition ALVA allows users to define horizontally oriented springs, <i>k<sub>h</sub></i>, operating at the top or bottom layer interfaces to model imperfect interface conditions. This model is engaged to calculate the response at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
 
 * Response analysis type
 ``` 
@@ -43,6 +46,14 @@ alva.analysis = 'Full';
 %                 surface displacements
 ``` 
 * Interface
+
+<div>
+<img src="images/interface.png" width="90%">
+</div>
+<p>
+ <b>Figure 3:</b> Close-up of interface showing a mechanical representation of the horizontal springs <i>k<sub>h</sub></i>
+</p>
+
 ``` 
 alva.bond = 'Bonded';
 % 1) 'Bonded'       : Full bonding between layers
@@ -50,37 +61,53 @@ alva.bond = 'Bonded';
 % 3) 'Frictionless' : No bonding between layers
 ```
 * Numerical parameters
+
+<div>
+<img src="images/bessel1.png" width="90%">
+</div>
+<p>
+ <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted and zero points are shown as red circles and gauss points as blue circles for the first interval and green circles for the second interval for N=n=5.
+</p>
+
 ``` 
 alva.N  = 300;  % Number of Bessel zero points in numerical integration
 alva.n  = 30;   % Number of Gauss points points between zero points.
 ``` 
-* Pavement material properties (minimum two layers required)
+* Pavement material properties (minimum two layers required) - See  <b>Figure 1</b> 
+
 ``` 
-alva.zi = [150 750];         % Depth of first n-1 layers from the 
+alva.zi = [200 760];         % Depth of first n-1 layers from the 
                              % surface [mm]: last z = inf, and should not 
                              % be added NB: zi(i) > zi(i-1) > z(i-2)...
-alva.E  = [3000 300 100];    % Layer Young's moduli [MPa]
-alva.nu = [0.30 0.35 0.4];   % Layer Poisson's ratio [-]
+alva.E  = [5000 200 50];     % Layer Young's moduli [MPa]
+alva.nu = [0.35 0.40 0.45];  % Layer Poisson's ratio [-]
 alva.kh = [1e6 1e6];         % Interface bonding/horizontal spring [MPa/mm]
 ``` 
 
 * Load configuration - Example dual load 
+
+<div>
+<img src="images/load.png" width="90%">
+</div>
+<p>
+ <b>Figure 5:</b> example dual wheel load.
+</p>
+
 ``` 
 alva.q  = [0.7
            0.7];         % Load pressure [MPa] (uniform vertical pressure)
 alva.a  = [106.6
            106.6];       % Load radii [mm] (circular load)
-alva.Xl = [0.0 -170
-           0.0  170];    % Load positions [mm]: [x1 y1; x2 y2;..xi yi];
+alva.Xl = [-170 0
+           170  0];    % Load positions [mm]: [x1 y1; x2 y2;..xi yi];
 ``` 
-* Location of evaluation points: (x1 y1 z1; x2 y2 z2;..)
+* Location of evaluation points: (x1 y1 z1; x2 y2 z2;..) 
+
+Response at the edge of one tire load, i.e., x=170 and y=0 with varying depth z = (0,259.99,260.1,760.1), and between tires, i.e.,  x=0 and y=0 with varying depth z = (0,259.99,260.1,760.1)
+
 ``` 
-alva.Xd = [0      0      0; 0      0     10; 0      0      20;    
-           0      0     30; 0      0     40; 0      0      50;	
-           0      0     75; 0      0	   100; 0      0     150;
-           0      0    200; 0      0	   250; 0      0     300; 
-           0      0    350; 0      0    400; 0      0     450;
-           0      0    500; 0      0    750; 0      0    1000];
+alva.Xd = [170 0 0; 170 0 259.99; 170 0 260.1; 170 0 760.1;
+             0 0 0;   0 0 259.99;   0 0 260.1;   0 0 760.1];   
 ```  
 
 * Initialize system and get response for the layered elastic model
