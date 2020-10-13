@@ -33,7 +33,7 @@ In this model all layers are assumed linear elastic, isotropic, homogeneous, ful
 
 The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 2</b>). Viscoelastic layers are associated with a creep compliance of the form [Smith (1971)](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
 
-<i>D(t) = D<sub>&infin;</sub> + <mfrac><mrow> D<sub>0</sub> - D<sub>&infin;</sub> </mrow> <mrow> 1 + (t/&tau;<sub>D</sub>)<sup>n<sub>D</sub></sup></mfrac></i>
+<i>D(t) = D<sub>&infin;</sub> + <mfrac><mrow> D<sub>0</sub> - D<sub>&infin;</sub> </mrow> <mrow> 1 + (t/&tau;<sub>D</sub>)<sup>n<sub>D</sub></sup> </mrow> </mfrac> </i>
 
 ,wherein <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i> are the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
 
