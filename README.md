@@ -33,7 +33,7 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
  <b>Figure 2:</b> <i>N</i>-layered half-space model 
 </p>
 
-In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where <i>n</i> denotes the layer number). In addition ALVA allows users to define horizontally oriented springs, <i>k<sub>h</sub></i>, operating at the top or bottom layer interfaces to model imperfect interface conditions. This model is engaged to calculate the response at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
+In this model all layers are assumed linear elastic, isotropic, homogeneous and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where <i>n</i> denotes the layer number). In addition ALVA allows users to define horizontally oriented springs, <i>k<sub>h</sub></i>, operating at the top or bottom layer interfaces to model imperfect interface conditions. This model is engaged to calculate the response at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
 
 * Analysis type
 ``` 
@@ -56,9 +56,12 @@ alva.analysis = 'Full';
 
 ``` 
 alva.bond = 'Bonded';
-% 1) 'Bonded'       : Full bonding between layers
-% 2) 'Slip'         : Interface bonding factor
-% 3) 'Frictionless' : No bonding between layers
+% 'Bonded'       : Full bonding between layers
+% 'Slip'         : Interface bonding factor
+% 'Frictionless' : No bonding between layers
+
+ % Interface bonding/horizontal spring [MPa/mm]
+alva.kh = [1e6 1e6];        
 ```
 * Numerical parameters
 
@@ -73,7 +76,7 @@ alva.bond = 'Bonded';
 alva.N  = 300;  % Number of Bessel zero points in numerical integration
 alva.n  = 30;   % Number of Gauss points points between zero points.
 ``` 
-* Pavement material properties (minimum two layers required) - See  <b>Figure 1</b> 
+* Pavement material properties (minimum two layers required) - see <b>Figure 1</b> 
 
 ``` 
 alva.zi = [200 760];         % Depth of first n-1 layers from the 
@@ -81,16 +84,16 @@ alva.zi = [200 760];         % Depth of first n-1 layers from the
                              % be added NB: zi(i) > zi(i-1) > z(i-2)...
 alva.E  = [5000 200 50];     % Layer Young's moduli [MPa]
 alva.nu = [0.35 0.40 0.45];  % Layer Poisson's ratio [-]
-alva.kh = [1e6 1e6];         % Interface bonding/horizontal spring [MPa/mm]
+
 ``` 
 
-* Load configuration - Example dual load 
+* Load configuration
 
 <div>
 <img src="images/load.png" width="75%">
 </div>
 <p>
- <b>Figure 5:</b> example dual wheel load.
+ <b>Figure 5:</b> Load configuration example: dual wheel load.
 </p>
 
 ``` 
@@ -111,6 +114,21 @@ alva.Xd = [170 0 0; 170 0 259.99; 170 0 260.1; 170 0 760.1;
 ```  
 
 * Initialize system and get response for the layered elastic model
+
+The output response is given in cartesian coordinates, i.e.:
+
+Displacements:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=u=\begin{bmatrix}&space;u_x&space;\\&space;u_y&space;\\&space;u_z&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u=\begin{bmatrix}&space;u_x&space;\\&space;u_y&space;\\&space;u_z&space;\end{bmatrix}" title="u=\begin{bmatrix} u_x \\ u_y \\ u_z \end{bmatrix}" /></a>
+
+Stresses
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma&space;=&space;\begin{bmatrix}&space;\sigma_{xx}&space;&&space;\sigma_{xy}&space;&&space;\sigma_{xz}&space;\\&space;\sigma_{xy}&space;&&space;\sigma_{yy}&space;&&space;\sigma_{yz}\\&space;\sigma_{xz}&space;&&space;\sigma_{yz}&space;&&space;\sigma_{zz}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma&space;=&space;\begin{bmatrix}&space;\sigma_{xx}&space;&&space;\sigma_{xy}&space;&&space;\sigma_{xz}&space;\\&space;\sigma_{xy}&space;&&space;\sigma_{yy}&space;&&space;\sigma_{yz}\\&space;\sigma_{xz}&space;&&space;\sigma_{yz}&space;&&space;\sigma_{zz}&space;\end{bmatrix}" title="\sigma = \begin{bmatrix} \sigma_{xx} & \sigma_{xy} & \sigma_{xz} \\ \sigma_{xy} & \sigma_{yy} & \sigma_{yz}\\ \sigma_{xz} & \sigma_{yz} & \sigma_{zz} \end{bmatrix}" /></a>
+
+Strains:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\varepsilon&space;=&space;\begin{bmatrix}&space;\varepsilon_{xx}&space;&&space;\varepsilon_{xy}&space;&&space;\varepsilon_{xz}&space;\\&space;\varepsilon_{xy}&space;&&space;\varepsilon_{yy}&space;&&space;\varepsilon_{yz}\\&space;\varepsilon_{xz}&space;&&space;\varepsilon_{yz}&space;&&space;\varepsilon_{zz}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\varepsilon&space;=&space;\begin{bmatrix}&space;\varepsilon_{xx}&space;&&space;\varepsilon_{xy}&space;&&space;\varepsilon_{xz}&space;\\&space;\varepsilon_{xy}&space;&&space;\varepsilon_{yy}&space;&&space;\varepsilon_{yz}\\&space;\varepsilon_{xz}&space;&&space;\varepsilon_{yz}&space;&&space;\varepsilon_{zz}&space;\end{bmatrix}" title="\varepsilon = \begin{bmatrix} \varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\ \varepsilon_{xy} & \varepsilon_{yy} & \varepsilon_{yz}\\ \varepsilon_{xz} & \varepsilon_{yz} & \varepsilon_{zz} \end{bmatrix}" /></a>
+
 ``` 
 alva = init_LET(alva);
 
@@ -139,7 +157,8 @@ epsxz = alva.epsxz.*1e6;
 ### Layered viscoelastic analysis
 The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 6</b>). 
 
-* Creep compliance curve for the asphalt layer (layer no. 1)
+* Creep compliance curve for the asphalt layer
+
 Viscoelastic layers are associated with a creep compliance of the form [(Smith, 1971)](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" title="D(t)=D_\infty+\frac{D_0-D_\infty}{1+(t/\tau_D)^{n_D}}" /></a>
@@ -152,9 +171,15 @@ D0   = 2.5e-5;    % Instantaneous or glassy compliance, [1/MPa]
 Dinf = 1.0e-2;    % Long time equilibrium or rubbery compliance [1/MPa]
 nD   = 0.35;      % Slope of the creep curve in the transient region [-]
 tauD = 1e3;       % Retardation time of the material response [s]
+
+% Determine creep compliance curve and relaxation modulus
+alva.ti = 12;     % Number increments on compliance curve
+
+alva    = VE_moduli(D0,Dinf,tauD,nD,alva);
 ``` 
 
 * Location of evaluation point and mesh for simulating moving load
+
 <div>
 <img src="images/VE_mesh.png" width="85%">
 </div>
@@ -178,6 +203,21 @@ yy   = rep(2)*ones(length(xx),1);  % Mesh y-direction
 zz   = rep(3)*ones(length(xx),1);  % Mesh z-direction
 Xr   = [xx' yy zz]; alva.Xr = Xr;  % Full mesh matrix
 ``` 
+
+* Calculate response
+```
+% Calculate linear elastic response
+alva = VE_response(alva.E,alva);
+
+% Simulate moving load
+
+% Select output response: displacements (dx, dy or dz), stresses (sigx, 
+% sigy, sigz, sigxy, sigyz or sigxz), strains (epsx, epsy, epsz, epsxy, 
+% epsyz or epsxz)
+
+letres = alva.dzm;                   % output response dz                                           
+veres  = VE_simulation(letres,alva); % run simulation
+```
 
 ## Code validation 
 ALVA comes with six validation cases/examples (i.e., `main.m` scripts), comparing ALVA to existing pavement analysis sofware and analytical formulations. 
@@ -208,7 +248,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 
 | Name        | Response                                   | Location                   | Unit   |
 |-------------|--------------------------------------------|----------------------------|--------|
-| R1          | Vertical stress (<i>&sigma<sub>z</sub></i>) at the surface                 | Load center                | MPa    |
+| R1          | Vertical stress at the surface                 | Load center                | MPa    |
 | R2          | Horizontal strain at the bottom of layer 1 | ''                         | micron |
 | R3          | Vertical strain at the top of layer 2      | ''                           | micron |
 | R4          | Vertical strain at the top of layer 3      | ''                           | micron |
