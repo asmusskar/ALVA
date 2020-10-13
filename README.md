@@ -31,8 +31,8 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
 
 In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n</sub>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness t<sub>n</sub> (where <i>n</i> denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j</sub>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
 
-*Input script layered elastic analysis
-**Response analysis type
+* Input script layered elastic analysis
+** Response analysis type
 ``` 
 alva.analysis = 'Full';
 % 1) 'Full'     : Conventional full integration with one-step Richardson
@@ -42,19 +42,19 @@ alva.analysis = 'Full';
 %                 according to Andersen et al. (2018) for evaluation of
 %                 surface displacements
 ``` 
-**Interface
+** Interface
 ``` 
 alva.bond = 'Bonded';
 % 1) 'Bonded'       : Full bonding between layers
 % 2) 'Slip'         : Interface bonding factor
 % 3) 'Frictionless' : No bonding between layers
 ```
-**Numerical parameters
+** Numerical parameters
 ``` 
 alva.N  = 300;  % Number of Bessel zero points in numerical integration
 alva.n  = 30;   % Number of Gauss points points between zero points.
 ``` 
-**Pavement material properties (minimum two layers required)
+** Pavement material properties (minimum two layers required)
 ``` 
 alva.zi = [150 750];         % Depth of first n-1 layers from the 
                              % surface [mm]: last z = inf, and should not 
@@ -64,7 +64,7 @@ alva.nu = [0.30 0.35 0.4];   % Layer Poisson's ratio [-]
 alva.kh = [1e6 1e6];         % Interface bonding/horizontal spring [MPa/mm]
 ``` 
 
-**Load configuration - Example dual load 
+** Load configuration - Example dual load 
 ``` 
 alva.q  = [0.7
            0.7];         % Load pressure [MPa] (uniform vertical pressure)
@@ -73,7 +73,7 @@ alva.a  = [106.6
 alva.Xl = [0.0 -170
            0.0  170];    % Load positions [mm]: [x1 y1; x2 y2;..xi yi];
 ``` 
-**Location of evaluation points:[x1 y1 z1; x2 y2 z2;..]
+** Location of evaluation points:[x1 y1 z1; x2 y2 z2;..]
 ``` 
 alva.Xd = [0      0      0; 0      0     10; 0      0      20;    
            0      0     30; 0      0     40; 0      0      50;	
@@ -83,7 +83,7 @@ alva.Xd = [0      0      0; 0      0     10; 0      0      20;
            0      0    500; 0      0    750; 0      0    1000];
 ```  
 
-**Initialize system and get response for the layered elastic model
+** Initialize system and get response for the layered elastic model
 ``` 
 alva = init_LET(alva);
 
@@ -154,12 +154,12 @@ In this section a basic validation of the ALVA package is presented, comparing A
 
 | Name        | Response                                   | Location                   | Unit   |
 |-------------|--------------------------------------------|----------------------------|--------|
-| R1          | Vertical stress at surface                 | Load center                | MPa    |
+| R1          | Vertical stress (<i>&sigma<sub>z</sub></i>) at the surface                 | Load center                | MPa    |
 | R2          | Horizontal strain at the bottom of layer 1 | ''                         | micron |
 | R3          | Vertical strain at the top of layer 2      | ''                           | micron |
 | R4          | Vertical strain at the top of layer 3      | ''                           | micron |
 |-------------|--------------------------------------------|----------------------------|--------|
-| R5          | Vertical stress at surface                 | Edge of load               | MPa    |
+| R5          | Vertical stress at the surface             | Edge of load               | MPa    |
 | R6          | Horizontal strain at the bottom of layer 1 | ''                           | micron |
 | R7          | Vertical strain at the top of layer 2      | ''                           | micron |
 | R8          | Vertical strain at the top of layer 3      | ''                           | micron |
