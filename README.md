@@ -60,7 +60,7 @@ alva.bond = 'Bonded';
 % 'Slip'         : Interface bonding factor
 % 'Frictionless' : No bonding between layers
 
- % Interface bonding/horizontal spring [MPa/mm]
+ % Interface bonding/horizontal spring [MPa/mm]: high -> 'Bonded' / low -> 'Frictionless'
 alva.kh = [1e6 1e6];        
 ```
 * Numerical parameters
@@ -69,7 +69,7 @@ alva.kh = [1e6 1e6];
 <img src="images/bessel1.png" width="75%">
 </div>
 <p>
- <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted and zero points are shown as red circles and gauss points as blue circles for the first interval and green circles for the second interval for 'N'='n'=5.
+ <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted with 'N'='n'=5. Zero points are shown as red circles, and Gauss points as blue and green circles for the first interval and second interval, respectively. 
 </p>
 
 ``` 
@@ -115,19 +115,19 @@ alva.Xd = [170 0 0; 170 0 259.99; 170 0 260.1; 170 0 760.1;
 
 * Initialize system and get response for the layered elastic model
 
-The output response is given in cartesian coordinates, i.e.:
+The output response is given in cartesian coordinates, i.e., for all points <i>A<sub>j</sub></i> we have:
 
 Displacements:
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=u=\begin{bmatrix}&space;u_x&space;\\&space;u_y&space;\\&space;u_z&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u=\begin{bmatrix}&space;u_x&space;\\&space;u_y&space;\\&space;u_z&space;\end{bmatrix}" title="u=\begin{bmatrix} u_x \\ u_y \\ u_z \end{bmatrix}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=u_j=\begin{bmatrix}&space;u_x&space;\\&space;u_y&space;\\&space;u_z&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u_j=\begin{bmatrix}&space;u_x&space;\\&space;u_y&space;\\&space;u_z&space;\end{bmatrix}" title="u_j=\begin{bmatrix} u_x \\ u_y \\ u_z \end{bmatrix}" /></a>
 
-Stresses
+Stresses:
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma&space;=&space;\begin{bmatrix}&space;\sigma_{xx}&space;&&space;\sigma_{xy}&space;&&space;\sigma_{xz}&space;\\&space;\sigma_{xy}&space;&&space;\sigma_{yy}&space;&&space;\sigma_{yz}\\&space;\sigma_{xz}&space;&&space;\sigma_{yz}&space;&&space;\sigma_{zz}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma&space;=&space;\begin{bmatrix}&space;\sigma_{xx}&space;&&space;\sigma_{xy}&space;&&space;\sigma_{xz}&space;\\&space;\sigma_{xy}&space;&&space;\sigma_{yy}&space;&&space;\sigma_{yz}\\&space;\sigma_{xz}&space;&&space;\sigma_{yz}&space;&&space;\sigma_{zz}&space;\end{bmatrix}" title="\sigma = \begin{bmatrix} \sigma_{xx} & \sigma_{xy} & \sigma_{xz} \\ \sigma_{xy} & \sigma_{yy} & \sigma_{yz}\\ \sigma_{xz} & \sigma_{yz} & \sigma_{zz} \end{bmatrix}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma_j&space;=&space;\begin{bmatrix}&space;\sigma_{xx}&space;&&space;\sigma_{xy}&space;&&space;\sigma_{xz}&space;\\&space;\sigma_{xy}&space;&&space;\sigma_{yy}&space;&&space;\sigma_{yz}\\&space;\sigma_{xz}&space;&&space;\sigma_{yz}&space;&&space;\sigma_{zz}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma_j&space;=&space;\begin{bmatrix}&space;\sigma_{xx}&space;&&space;\sigma_{xy}&space;&&space;\sigma_{xz}&space;\\&space;\sigma_{xy}&space;&&space;\sigma_{yy}&space;&&space;\sigma_{yz}\\&space;\sigma_{xz}&space;&&space;\sigma_{yz}&space;&&space;\sigma_{zz}&space;\end{bmatrix}" title="\sigma_j = \begin{bmatrix} \sigma_{xx} & \sigma_{xy} & \sigma_{xz} \\ \sigma_{xy} & \sigma_{yy} & \sigma_{yz}\\ \sigma_{xz} & \sigma_{yz} & \sigma_{zz} \end{bmatrix}" /></a>
 
 Strains:
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\varepsilon&space;=&space;\begin{bmatrix}&space;\varepsilon_{xx}&space;&&space;\varepsilon_{xy}&space;&&space;\varepsilon_{xz}&space;\\&space;\varepsilon_{xy}&space;&&space;\varepsilon_{yy}&space;&&space;\varepsilon_{yz}\\&space;\varepsilon_{xz}&space;&&space;\varepsilon_{yz}&space;&&space;\varepsilon_{zz}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\varepsilon&space;=&space;\begin{bmatrix}&space;\varepsilon_{xx}&space;&&space;\varepsilon_{xy}&space;&&space;\varepsilon_{xz}&space;\\&space;\varepsilon_{xy}&space;&&space;\varepsilon_{yy}&space;&&space;\varepsilon_{yz}\\&space;\varepsilon_{xz}&space;&&space;\varepsilon_{yz}&space;&&space;\varepsilon_{zz}&space;\end{bmatrix}" title="\varepsilon = \begin{bmatrix} \varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\ \varepsilon_{xy} & \varepsilon_{yy} & \varepsilon_{yz}\\ \varepsilon_{xz} & \varepsilon_{yz} & \varepsilon_{zz} \end{bmatrix}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\varepsilon_j&space;=&space;\begin{bmatrix}&space;\varepsilon_{xx}&space;&&space;\varepsilon_{xy}&space;&&space;\varepsilon_{xz}&space;\\&space;\varepsilon_{xy}&space;&&space;\varepsilon_{yy}&space;&&space;\varepsilon_{yz}\\&space;\varepsilon_{xz}&space;&&space;\varepsilon_{yz}&space;&&space;\varepsilon_{zz}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\varepsilon_j&space;=&space;\begin{bmatrix}&space;\varepsilon_{xx}&space;&&space;\varepsilon_{xy}&space;&&space;\varepsilon_{xz}&space;\\&space;\varepsilon_{xy}&space;&&space;\varepsilon_{yy}&space;&&space;\varepsilon_{yz}\\&space;\varepsilon_{xz}&space;&&space;\varepsilon_{yz}&space;&&space;\varepsilon_{zz}&space;\end{bmatrix}" title="\varepsilon_j = \begin{bmatrix} \varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\ \varepsilon_{xy} & \varepsilon_{yy} & \varepsilon_{yz}\\ \varepsilon_{xz} & \varepsilon_{yz} & \varepsilon_{zz} \end{bmatrix}" /></a>
 
 ``` 
 alva = init_LET(alva);
