@@ -29,9 +29,70 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
  <b>Figure 1: </b><i>N</i>-layered half-space model 
 </p>
 
-In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n</sub>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness t<sub>n</sub> (where <i>n</i> denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j</sub>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06)
+In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus E<sub>n</sub>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness t<sub>n</sub> (where <i>n</i> denotes the layer number). This model is engaged to calculate the response at any point, A<sub>j</sub>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
 
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 2</b>). Viscoelastic layers are associated with a creep compliance of the form [Smith (1971)](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
+* Input script
+``` % Select response analysis type
+alva.analysis = 'Full';
+% 1) 'Full'     : Conventional full integration with one-step Richardson
+%                 extrapolation (for improved convergence near surface) 
+%                 applied for evaluation of displacements and stresses
+% 2) 'PolFit'   : Use polynomial fit technique to reduce integral length
+%                 according to Andersen et al. (2018) for evaluation of
+%                 surface displacements
+``` 
+
+``` % Select interface 
+alva.bond = 'Bonded';
+% 1) 'Bonded'       : Full bonding between layers
+% 2) 'Slip'         : Interface bonding factor
+% 3) 'Frictionless' : No bonding between layers
+```
+% -------------------------------------------------------------------------
+% Numerical parameters
+% -------------------------------------------------------------------------
+alva.N  = 300;  % Number of Bessel zero points in numerical integration
+alva.n  = 30;   % Number of Gauss points points between zero points.
+
+% -------------------------------------------------------------------------
+% Pavement material properties (minimum two layers required)
+% -------------------------------------------------------------------------
+alva.zi = [150 750];         % Depth of first n-1 layers from the 
+                             % surface [mm]: last z = inf, and should not 
+                             % be added NB: zi(i) > zi(i-1) > z(i-2)...
+alva.E  = [3000 300 100];    % Layer Young's moduli [MPa]
+alva.nu = [0.30 0.35 0.4];   % Layer Poisson's ratio [-]
+alva.kh = [1e6 1e6];         % Interface bonding/horizontal spring [MPa/mm]
+
+% -------------------------------------------------------------------------
+% Load configuration - Example dual load 
+% -------------------------------------------------------------------------
+alva.q  = [0.7
+           0.7];         % Load pressure [MPa] (uniform vertical pressure)
+alva.a  = [106.6
+           106.6];       % Load radii [mm] (circular load)
+alva.Xl = [0.0 -170
+           0.0  170];    % Load positions [mm]: [x1 y1; x2 y2;..xi yi];
+              
+´´´
+% -------------------------------------------------------------------------
+% Location of evaluation points: [x1 y1 z1; x2 y2 z2;..]
+% -------------------------------------------------------------------------
+alva.Xd = [
+           0      0      0; 0      0     10; 0      0      20;    
+           0      0     30; 0      0     40; 0      0      50;	
+           0      0     75; 0      0	   100; 0      0     150;
+           0      0    200; 0      0	   250; 0      0     300; 
+           0      0    350; 0      0    400; 0      0     450;
+           0      0    500; 0      0    750; 0      0    1000];
+    
+% -------------------------------------------------------------------------
+% Initialize system and get response
+% -------------------------------------------------------------------------
+´´´
+
+
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 2</b>). Viscoelastic layers are associated with a creep compliance of the form [(Smith, 1971)](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" title="D(t)=D_\infty+\frac{D_0-D_\infty}{1+(t/\tau_D)^{n_D}}" /></a>
 
