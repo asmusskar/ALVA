@@ -431,7 +431,6 @@ ALVA 'Bonded'              |  ALVA 'Frictionless'
 <b>Table 10</b>: Backcalculated Young's moduli. 
 </p>
 
-
 ## Installation
 * Download the package on your PC. 
 * Open MATLAB
