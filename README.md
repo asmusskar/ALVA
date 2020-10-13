@@ -27,7 +27,7 @@ Examples on ‘main.m’ scripts can be found in the _../ALVA/examples_ folder a
 The core algorithm behind this package is based on LET, i.e., the classic formulation for an <i>N</i>-layered half-space, shown in <b>Figure 2</b> 
 
 <div>
-<img src="images/N_layer.png" width="90%">
+<img src="images/N_layer.png" width="75%">
 </div>
 <p>
  <b>Figure 2:</b> <i>N</i>-layered half-space model 
@@ -35,7 +35,7 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
 
 In this model all layers are assumed linear elastic, isotropic, homogeneous, fully bonded, and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where <i>n</i> denotes the layer number). In addition ALVA allows users to define horizontally oriented springs, <i>k<sub>h</sub></i>, operating at the top or bottom layer interfaces to model imperfect interface conditions. This model is engaged to calculate the response at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
 
-* Response analysis type
+* Analysis type
 ``` 
 alva.analysis = 'Full';
 % 1) 'Full'     : Conventional full integration with one-step Richardson
@@ -48,7 +48,7 @@ alva.analysis = 'Full';
 * Interface
 
 <div>
-<img src="images/interface.png" width="90%">
+<img src="images/interface.png" width="75%">
 </div>
 <p>
  <b>Figure 3:</b> Close-up of interface showing a mechanical representation of the horizontal springs <i>k<sub>h</sub></i>
@@ -63,7 +63,7 @@ alva.bond = 'Bonded';
 * Numerical parameters
 
 <div>
-<img src="images/bessel1.png" width="90%">
+<img src="images/bessel1.png" width="75%">
 </div>
 <p>
  <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted and zero points are shown as red circles and gauss points as blue circles for the first interval and green circles for the second interval for 'N'='n'=5.
@@ -87,7 +87,7 @@ alva.kh = [1e6 1e6];         % Interface bonding/horizontal spring [MPa/mm]
 * Load configuration - Example dual load 
 
 <div>
-<img src="images/load.png" width="90%">
+<img src="images/load.png" width="75%">
 </div>
 <p>
  <b>Figure 5:</b> example dual wheel load.
@@ -137,20 +137,47 @@ epsxz = alva.epsxz.*1e6;
 ``` 
 
 ### Layered viscoelastic analysis
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 6</b>). Viscoelastic layers are associated with a creep compliance of the form [(Smith, 1971)](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [Levenberg (2016)](https://orbit.dtu.dk/en/publications/viscoelastic-pavement-modeling-with-a-spreadsheet) (see <b>Figure 6</b>). 
+
+* Creep compliance curve for the asphalt layer (layer no. 1)
+Viscoelastic layers are associated with a creep compliance of the form [(Smith, 1971)](https://onlinelibrary.wiley.com/doi/abs/10.1002/polc.5070350105?casa_token=TpvXuLD4yg8AAAAA:TcBBkISUJUuPIZN2fKHRLHHmNavv1OKzu1LKCWZ51C8_wCJto9Tn_ETbQht9EjOxkuEShFa-kxDZB5v8):
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" title="D(t)=D_\infty+\frac{D_0-D_\infty}{1+(t/\tau_D)^{n_D}}" /></a>
 
 ,wherein <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i> are the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
 
+``` 
+% Viscoelastic properties of asphalt layer E(1)
+D0   = 2.5e-5;    % Instantaneous or glassy compliance, [1/MPa]
+Dinf = 1.0e-2;    % Long time equilibrium or rubbery compliance [1/MPa]
+nD   = 0.35;      % Slope of the creep curve in the transient region [-]
+tauD = 1e3;       % Retardation time of the material response [s]
+``` 
+
+* Location of evaluation point and mesh for simulating moving load
 <div>
-<img src="images/VE_mesh.png" width="90%">
+<img src="images/VE_mesh.png" width="85%">
 </div>
 <p>
 <b>Figure 6: </b>Load scheme to simulate movement
 </p>
 
 The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x<sub>0</sub></i> (End). The travel path is decomposed into <i>N</i> intervals (<i>i=1,…,N</i>), each <i>&Delta;x</i> long. The point of response evaluation <i>A<sub>j</sub></i> is indicated in the Figure; this point is located near the middle of the travel path (i.e., <i>x</i>-coordinate of zero), at <i>y</i>-coordinate <i>y<sub>0</sub></i> and depth <i>z<sub>0</sub></i> below the surface.
+
+``` 
+rep  = [0 0 0];                    % [x y z]-coordinate of evaluation point
+nels = 200;                        % Number of elements
+Vkh  = 60;                         % Vehicle speed [km/h]
+V    = Vkh/3.6*1e3;                % Vehicle speed [mm/s]
+x0   = 5000;                       % Start / end of mesh [mm]
+dx0  = 2*x0/nels;                  % Mesh increment [mm]
+dt   = dx0/V;  alva.dt = dt;       % Time increment [s]
+tt   = 2*x0/V; alva.tt = tt;       % Total travel time [s]
+xx   = (0:dx0:x0);                 % Mesh x-direction
+yy   = rep(2)*ones(length(xx),1);  % Mesh y-direction
+zz   = rep(3)*ones(length(xx),1);  % Mesh z-direction
+Xr   = [xx' yy zz]; alva.Xr = Xr;  % Full mesh matrix
+``` 
 
 ## Code validation 
 ALVA comes with six validation cases/examples (i.e., `main.m` scripts), comparing ALVA to existing pavement analysis sofware and analytical formulations. 
