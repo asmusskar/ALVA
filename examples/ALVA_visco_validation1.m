@@ -93,7 +93,7 @@ alva.ti = 12;          % Number increments on compliance curve
 alva    = VE_moduli(D0,Dinf,tauD,nD,alva);
 
 % -------------------------------------------------------------------------
-% Calculate linear elastic response
+% Calculate linear elastic response at different times
 % -------------------------------------------------------------------------
 alva = VE_response(alva.E,alva);
 
