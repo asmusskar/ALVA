@@ -33,7 +33,7 @@ The core algorithm behind this package is based on LET, i.e., the classic formul
  <b>Figure 2:</b> <i>N</i>-layered half-space model 
 </p>
 
-In this model all layers are assumed linear elastic, isotropic, homogeneous and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&Nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where <i>n</i> denotes the layer number). In addition ALVA allows users to define horizontally oriented springs, <i>k<sub>h</sub></i>, operating at the top or bottom layer interfaces to model imperfect interface conditions. This model is engaged to calculate the response at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
+In this model all layers are assumed linear elastic, isotropic, homogeneous and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where <i>n</i> denotes the layer number). In addition ALVA allows users to define horizontally oriented springs, <i>k<sub>h</sub></i>, operating at the top or bottom layer interfaces to model imperfect interface conditions. This model is engaged to calculate the response at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
 
 * Analysis type
 ``` 
@@ -258,7 +258,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | R7          | Vertical strain at the top of layer 2      | ''                           | micron |
 | R8          | Vertical strain at the top of layer 3      | ''                           | micron |
 <p>
-<b>Table 2</b>: Description of key-point responses used for basic validation of the code. 
+<b>Table 3</b>: Description of key-point responses used for basic validation of the code. 
 </p>
 
 | Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
@@ -269,7 +269,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | ALVA ('Slip') |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
 | ALVA ('Bonded') |   0.7   |  -100.4  |  251.6  |  185.1  |  0.3  |   -61.8  |  192.3  |  177.5 |
 <p>
-<b>Table 3</b>: Reference pavement system subjeceted to a single wheel load - bonded interfaces.
+<b>Table 4</b>: Reference pavement system subjeceted to a single wheel load - bonded interfaces.
 </p>
 
 | Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
@@ -279,7 +279,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | GAMES       |   0.7   |    -119  |   11    |   217   |   0    |   -77   |   -1    |  205 |
 | ALVA ('Slip') |   0.7   |  -119.5  |  0.7    | 216.5   | 0.3    | -77.8   | -9.7    |204.7 |
 <p>
-<b>Table 4</b>: Reference pavement system subjeceted to a single wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
+<b>Table 5</b>: Reference pavement system subjeceted to a single wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
 </p>
 
 | Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
@@ -290,7 +290,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | ALVA ('Slip') |   0.7   |  -84.9   | 186     | 169.7   | 0     |  -88.8   | 183.2   | 177.2  |
 | ALVA ('Bonded') |   0.7   |  -84.9   | 186     | 169.7   | 0     |  -88.8   | 183.2   | 177.2  |
 <p>
-<b>Table 5</b>: Reference pavement system subjeceted to a dual wheel load - bonded interfaces.
+<b>Table 6</b>: Reference pavement system subjeceted to a dual wheel load - bonded interfaces.
 </p>
 
 | Software    |   R1    |     R2   |    R3   |    R4   |  R5   |     R6   |  R7     |    R8  |
@@ -300,7 +300,7 @@ In this section a basic validation of the ALVA package is presented, comparing A
 | GAMES       |   0.7   |    -101  |    -3   |   194   | 0     |  -106    |    1    |   205  |
 | ALVA ('Slip') |   0.7   |  -102.6  |  -9.2   | 193.4   | 0     |  -107    |-11.5    | 204.1  |
 <p>
-<b>Table 6</b>: Reference pavement system subjeceted to a dual wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
+<b>Table 7</b>: Reference pavement system subjeceted to a dual wheel load - unbonded interface between layer 1 and 2, bonded interface between layer 2 and 3.
 </p>
 
 ### Case 2 - Vertical stresses and displacements for an elastic half-space with depth
@@ -387,13 +387,13 @@ The support script `inv_loop.m` was developed for this specific example. Moreove
 <b>Figure 13</b>: Principle of operation for the Falling Weight Deflectometer (FWD) test: load and measurement configuration
 </p>
 
-| Layer    | Thickness (mm) | Youngs moduli (MPa) | Poisson's ratio  |    
-|----------|----------------|---------------------|------------------|
-| 1        |   161          |      ?              |   0.35           |
-| 2        |   260          |      ?              |   0.35            |
-| 3        |   &infin;      |      ?              |   0.35            |
+| Layer    | Thickness (mm) | Young's moduli (MPa)<sup>*</sup> | Poisson's ratio  |    
+|----------|----------------|----------------------|------------------|
+| 1        |   161          |      200             |   0.35           |
+| 2        |   260          |      200             |   0.35            |
+| 3        |   &infin;      |      200             |   0.35            |
 <p>
-<b>Table 7</b>: Measured pavement ticknesses. 
+<b>Table 8</b>: Measured pavement ticknesses. Note: <sup>*</sup> initial Young's moduli used in analysis.
 </p>
 
 | Load     | Radius (mm)    | Pressure, <i>q</i> (MPa) | <i>x</i>-position (mm) |  <i>y</i>-position (mm) |    
@@ -401,7 +401,7 @@ The support script `inv_loop.m` was developed for this specific example. Moreove
 | Single   |   150          |     0.7           |      0          |   0              |
 
 <p>
-<b>Table 8</b>: Falling Weight Deflectometer (FWD) load. 
+<b>Table 9</b>: Falling Weight Deflectometer (FWD) load. 
 </p>
 
 | Geophone                          |   G1    |     G2   |    G3    |    G4    |   G5    |     G6   |    G7     |    G8   | G9     |
@@ -410,7 +410,7 @@ The support script `inv_loop.m` was developed for this specific example. Moreove
 | Displacement measurement (&mu;m): | 298.9   |    244.2 |    220.07|    175.0 | 138.0   |   97.3   |   72.2    |     57.4|    47.6|
 
 <p>
-<b>Table 9</b>: Sensor location and displacement measurements.
+<b>Table 10</b>: Sensor location and displacement measurements.
 </p>
 
 
@@ -428,7 +428,7 @@ ALVA 'Bonded'              |  ALVA 'Frictionless'
 | 2        |   260          |     314                         |  2392                                 |   0.35            |
 | 3        |   &infin;      |     179                         |  162                                  |   0.35            |
 <p>
-<b>Table 10</b>: Backcalculated Young's moduli. 
+<b>Table 11</b>: Backcalculated Young's moduli. 
 </p>
 
 ## Installation
