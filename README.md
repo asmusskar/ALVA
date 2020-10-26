@@ -184,7 +184,7 @@ alva    = VE_moduli(D0,Dinf,tauD,nD,alva);
 <img src="images/VE_mesh.png" width="85%">
 </div>
 <p>
-<b>Figure 6: </b>Load scheme to simulate movement
+<b>Figure 6:</b> Load scheme for simulating a moving load
 </p>
 
 The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x<sub>0</sub></i> (End). The travel path is decomposed into <i>N</i> intervals (<i>i=1,…,N</i>), each <i>&Delta;x</i> long. The point of response evaluation <i>A<sub>j</sub></i> is indicated in the Figure; this point is located near the middle of the travel path (i.e., <i>x</i>-coordinate of zero), at <i>y</i>-coordinate <i>y<sub>0</sub></i> and depth <i>z<sub>0</sub></i> below the surface.
