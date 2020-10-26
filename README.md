@@ -206,7 +206,7 @@ Xr   = [xx' yy zz]; alva.Xr = Xr;  % Full mesh matrix
 
 * Calculate response
 ```
-% Calculate linear elastic response
+% Calculate linear elastic response at different times
 alva = VE_response(alva.E,alva);
 
 % Simulate moving load
