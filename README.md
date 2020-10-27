@@ -145,7 +145,7 @@ sigxy = alva.sigxy;
 sigyz = alva.sigyz;      
 sigxz = alva.sigxz;   
 
-% Strains [<i>&mu;</i>]
+% Strains [10e-6]
 epsx  = alva.epsx.*1e6;  
 epsy  = alva.epsy.*1e6;  
 epsz  = alva.epsz.*1e6; 
