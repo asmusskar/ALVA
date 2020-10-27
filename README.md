@@ -24,7 +24,7 @@ Examples on ‘main.m’ scripts can be found in the _../ALVA/examples_ folder a
 
 ## Main input parameters
 ### Layered elastic analysis
-The core algorithm behind this package is based on LET, i.e., the classic formulation for an <i>N</i>-layered half-space, shown in <b>Figure 2</b> 
+The core algorithm behind this package is based on linear elastic theory (LET), i.e., the classic formulation for an <i>N</i>-layered half-space, shown in <b>Figure 2</b> 
 
 <div>
 <img src="images/N_layer.png" width="75%">
@@ -69,7 +69,7 @@ alva.kh = [1e6 1e6];
 <img src="images/bessel1.png" width="75%">
 </div>
 <p>
- <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted with 'N'='n'=5. Zero points are shown as red circles, and Gauss points as blue and green circles for the first interval and second interval, respectively. 
+ <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted with 'N'='n'=5. Zero points are shown as red circles, and Gauss points as blue and green circles for the first and second interval, respectively. 
 </p>
 
 ``` 
@@ -106,7 +106,7 @@ alva.Xl = [-170 0
 ``` 
 * Location of evaluation points: (x1 y1 z1; x2 y2 z2;..) 
 
-Response at the edge of one tire load, i.e., <i>x</i>=170 and <i>y</i>=0 with varying depth <i>z</i>=(0,259.99,260.1,760.1), and between tires, i.e., <i>x</i>=0 and <i>y</i>=0 with varying depth <i>z</i>=(0,259.99,260.1,760.1)
+Response at the centre of one tire load, i.e., <i>x</i>=170 and <i>y</i>=0 with varying depth <i>z</i>=(0,259.99,260.1,760.1), and midpoint between tires, i.e., <i>x</i>=0 and <i>y</i>=0 with varying depth <i>z</i>=(0,259.99,260.1,760.1)
 
 ``` 
 alva.Xd = [170 0 0; 170 0 259.99; 170 0 260.1; 170 0 760.1;
@@ -145,7 +145,7 @@ sigxy = alva.sigxy;
 sigyz = alva.sigyz;      
 sigxz = alva.sigxz;   
 
-% Strains [micro strain]
+% Strains [<i>&mu;</i>]
 epsx  = alva.epsx.*1e6;  
 epsy  = alva.epsy.*1e6;  
 epsz  = alva.epsz.*1e6; 
@@ -163,7 +163,7 @@ Viscoelastic layers are associated with a creep compliance of the form [(Smith, 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?D(t)=D_\infty&plus;\frac{D_0-D_\infty}{1&plus;(t/\tau_D)^{n_D}}" title="D(t)=D_\infty+\frac{D_0-D_\infty}{1+(t/\tau_D)^{n_D}}" /></a>
 
-,wherein <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i> are the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
+wherein <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i> are the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
 
 ``` 
 % Viscoelastic properties of asphalt layer E(1)
@@ -191,7 +191,7 @@ The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x
 
 ``` 
 rep  = [0 0 0];                    % [x y z]-coordinate of evaluation point
-nels = 200;                        % Number of elements
+nels = 200;                        % Number of elements [-]
 Vkh  = 60;                         % Vehicle speed [km/h]
 V    = Vkh/3.6*1e3;                % Vehicle speed [mm/s]
 x0   = 5000;                       % Start / end of mesh [mm]
