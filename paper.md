@@ -24,25 +24,15 @@ A key component in design and analysis of asphalt pavements is the response mode
 
 Although, pavement analysis tools have been developed to address the limitations of conventional LET analysis, there are currently no computer package that supports all aforementioned needs in a unified manner. Moreover, existing software are often limited to standard design problems (e.g., only applicable to a limited number of layers and loads) and the control over the program features is restricted (e.g., source codes not available, implementation not documented, numerical parameters fixed). Thus, the aim with the software presented herein is to equip the civil engineering community with an advanced pavement modeling tool and computer package that is highly adaptive, transparent and open-access, capable of supporting current and future pavement evaluation needs. 
 
-To achieve this, some of the most promising numerical techniques that are currently available for effectively solving elastic and linear viscoelastic layered problems have been implemented in a MATLAB computer package. The core algorithm behind this package is based on LET, i.e., the classic formulation for an N-layered half-space [@Burmister:1945a], shown in <b>Figure 1</b>.
+To achieve this, some of the most promising numerical techniques that are currently available for effectively solving elastic and linear viscoelastic layered problems have been implemented in a MATLAB computer package. The core algorithm behind this package is based on LET, i.e., the classic formulation for an N-layered half-space [@Burmister:1945a], shown in Figure \ref{fig:load}.
 
-<p>
-<img src="images/N_layer.png" width="50%">
-</p>
-<p>
-<b>Figure 1</b>: N-Layered half-space model
-</p>
+![N-layered half-space model.\label{fig:model}](images/N_layer.png)
 
 In this model all layers are assumed linear elastic, isotropic, homogeneous, and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where n denotes the layer number). This model is engaged to calculate the response (i.e stresses and defomations) at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). In addition ALVA allows users to define horizontally oriented springs operating at the top or bottom layer interfaces to model imperfect interface conditions [@Levenberg:2020a]. Moreover, numerical features for improved code performance, e.g., acceleration techniques to speed computational time for analysis of surface displacements [@Andersen:2020a] and full response analysis [@khazanovich:2007a; @Levenberg:2016a] and extrapolation technique to improve convergence [@Erlingsson:2013a]. An overview of LET model assumptions and solution procedure is given in [@khazanovich:2007a].
 
-The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [@Levenberg:2016c] (see Figure 2). Viscoelastic layers are associated with a creep compliance and model parameters <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>, the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
+The viscoelastic response is approximated based on the LET calculations utilizing the methodology and load scheme suggested by [@Levenberg:2016c] (see Figure \ref{fig:load}). Viscoelastic layers are associated with a creep compliance and model parameters <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>, the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
 
-<p>
-<img src="images/VE_mesh.png" width="90%">
-</p>
-<p>
-<b>Figure 2</b>: Load scheme for simulating a moving load
-</p>
+![Load scheme for simulating a moving load.\label{fig:load}](images/VE_mesh.png)
 
 The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x<sub>0</sub></i> (End). The travel path is decomposed into <i>N</i> intervals (<i>i=1,…,N</i>), each <i>&Delta;x</i> long. The point of response evaluation <i>A<sub>j</sub></i> is indicated in the Figure; this point is located near the middle of the travel path (i.e., <i>x</i>-coordinate of zero), at <i>y</i>-coordinate <i>y<sub>0</sub></i> and depth <i>z<sub>0</sub></i> below the surface. 
 
