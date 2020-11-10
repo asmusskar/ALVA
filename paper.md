@@ -24,7 +24,7 @@ A key component in design and analysis of asphalt pavements is the response mode
 
 Although, pavement analysis tools have been developed to address the limitations of conventional LET analysis, there are currently no computer package that supports all aforementioned needs in a unified manner. Moreover, existing software are often limited to standard design problems (e.g., only applicable to a limited number of layers and loads) and the control over the program features is restricted (e.g., source codes not available, implementation not documented, numerical parameters fixed). This paper presents a software, named Adaptive Layered Viscoelastic Analysis (ALVA), with the aim  to equip the civil engineering community with an advanced pavement modeling tool and computer package that is highly adaptive, transparent and open-access, capable of supporting current and future pavement evaluation needs. 
 
-To achieve this, some of the most promising numerical techniques that are currently available for effectively solving elastic and linear viscoelastic layered problems have been implemented in a MATLAB computer package. The core algorithm behind this package is based on LET, i.e., the classic formulation for an $N$-layered half-space [@Burmister:1945a], shown in Figure \ref{fig:model}.
+To achieve this, some of the most promising numerical techniques that are currently available for effectively solving elastic and linear viscoelastic layered problems is implemented in a MATLAB computer package. The core algorithm behind this package is based on LET, i.e., the classic formulation for an $N$-layered half-space [@Burmister:1945a], shown in Figure \ref{fig:model}.
 
 ![$N$-layered half-space model.\label{fig:model}](images/N_layer.png){width=75%}
 
