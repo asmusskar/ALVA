@@ -36,7 +36,7 @@ The core algorithm behind this package is based on linear elastic theory (LET), 
 In this model all layers are assumed linear elastic, isotropic, homogeneous and weightless. The model inputs include Young’s modulus <i>E<sub>n</sub></i>, Poisson’s ratio <i>&nu;<sub>n</sub></i>, and layer thickness <i>t<sub>n</sub></i> (where <i>n</i> denotes the layer number). In addition ALVA allows users to define horizontally oriented springs, <i>k<sub>h</sub></i>, operating at the top or bottom layer interfaces to model imperfect interface conditions. This model is engaged to calculate the response at any point, <i>A<sub>j</sub></i>, of interest and for a given set of uniformly distributed circular loadings with load radius, <i>a</i>, and pressure <i>q</i>). An overview of LET model assumptions and solution procedure is given in [Khazanovich and Wang (2007)](https://journals.sagepub.com/doi/abs/10.3141/2037-06).
 
 * Analysis type
-``` 
+``` matlab
 alva.analysis = 'Full';
 % 1) 'Full'     : Conventional full integration with one-step Richardson
 %                 extrapolation (for improved convergence near surface) 
@@ -54,7 +54,7 @@ alva.analysis = 'Full';
  <b>Figure 3:</b> Close-up of interface showing a mechanical representation of the horizontal springs <i>k<sub>h</sub></i>
 </p>
 
-``` 
+``` matlab
 alva.bond = 'Bonded';
 % 'Bonded'       : Full bonding between layers
 % 'Slip'         : Interface bonding factor
@@ -72,7 +72,7 @@ alva.kh = [1e6 1e6];
  <b>Figure 4:</b> Visualisation of numerical parameters, i.e., Bessel function zero points 'N' and Gauss points 'n' for solving the inverse Hankel transform. In the Figure a Bessel function of the first kind of order zero is plotted with 'N'='n'=5. Zero points are shown as red circles, and Gauss points as blue and green circles for the first and second interval, respectively. 
 </p>
 
-``` 
+``` matlab
 alva.N  = 300;  % Number of Bessel zero points in numerical integration
 alva.n  = 30;   % Number of Gauss points points between zero points.
 ``` 
@@ -96,7 +96,7 @@ alva.nu = [0.35 0.40 0.45];  % Layer Poisson's ratio [-]
  <b>Figure 5:</b> Load configuration example: dual wheel load.
 </p>
 
-``` 
+``` matlab
 alva.q  = [0.7
            0.7];         % Load pressure [MPa] (uniform vertical pressure)
 alva.a  = [106.6
@@ -108,7 +108,7 @@ alva.Xl = [-170 0
 
 Response at the centre of one tire load, i.e., <i>x</i>=170 and <i>y</i>=0 with varying depth <i>z</i>=(0,259.99,260.1,760.1), and midpoint between tires, i.e., <i>x</i>=0 and <i>y</i>=0 with varying depth <i>z</i>=(0,259.99,260.1,760.1)
 
-``` 
+``` matlab
 alva.Xd = [170 0 0; 170 0 259.99; 170 0 260.1; 170 0 760.1;
              0 0 0;   0 0 259.99;   0 0 260.1;   0 0 760.1];   
 ```  
@@ -129,7 +129,7 @@ Strains:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\varepsilon_j&space;=&space;\begin{bmatrix}&space;\varepsilon_{xx}&space;&&space;\varepsilon_{xy}&space;&&space;\varepsilon_{xz}&space;\\&space;\varepsilon_{xy}&space;&&space;\varepsilon_{yy}&space;&&space;\varepsilon_{yz}\\&space;\varepsilon_{xz}&space;&&space;\varepsilon_{yz}&space;&&space;\varepsilon_{zz}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\varepsilon_j&space;=&space;\begin{bmatrix}&space;\varepsilon_{xx}&space;&&space;\varepsilon_{xy}&space;&&space;\varepsilon_{xz}&space;\\&space;\varepsilon_{xy}&space;&&space;\varepsilon_{yy}&space;&&space;\varepsilon_{yz}\\&space;\varepsilon_{xz}&space;&&space;\varepsilon_{yz}&space;&&space;\varepsilon_{zz}&space;\end{bmatrix}" title="\varepsilon_j = \begin{bmatrix} \varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\ \varepsilon_{xy} & \varepsilon_{yy} & \varepsilon_{yz}\\ \varepsilon_{xz} & \varepsilon_{yz} & \varepsilon_{zz} \end{bmatrix}" /></a>
 
-``` 
+``` matlab
 alva = init_LET(alva);
 
 % Displacements [mm]
@@ -165,7 +165,7 @@ Viscoelastic layers are associated with a creep compliance of the form [(Smith, 
 
 wherein <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i> are the short and long time compliances (respectively), and shape parameters <i>&tau;<sub>D</sub></i> and <i>n<sub>D</sub></i>, controlling the transition between <i>D<sub>0</sub></i> and <i>D<sub>&infin;</sub></i>. 
 
-``` 
+``` matlab
 % Viscoelastic properties of asphalt layer E(1)
 D0   = 2.5e-5;    % Instantaneous or glassy compliance, [1/MPa]
 Dinf = 1.0e-2;    % Long time equilibrium or rubbery compliance [1/MPa]
@@ -189,7 +189,7 @@ alva    = VE_moduli(D0,Dinf,tauD,nD,alva);
 
 The load moves in a straight line from <i>x=-x<sub>0</sub></i> (Start) to <i>x=x<sub>0</sub></i> (End). The travel path is decomposed into <i>N</i> intervals (<i>i=1,…,N</i>), each <i>&Delta;x</i> long. The point of response evaluation <i>A<sub>j</sub></i> is indicated in the Figure; this point is located near the middle of the travel path (i.e., <i>x</i>-coordinate of zero), at <i>y</i>-coordinate <i>y<sub>0</sub></i> and depth <i>z<sub>0</sub></i> below the surface.
 
-``` 
+``` matlab
 rep  = [0 0 0];                    % [x y z]-coordinate of evaluation point
 nels = 200;                        % Number of elements [-]
 Vkh  = 60;                         % Vehicle speed [km/h]
@@ -205,7 +205,7 @@ Xr   = [xx' yy zz]; alva.Xr = Xr;  % Full mesh matrix
 ``` 
 
 * Calculate response
-```
+``` matlab
 % Calculate linear elastic response at different times
 alva = VE_response(alva.E,alva);
 
@@ -436,4 +436,13 @@ ALVA 'Bonded'              |  ALVA 'Frictionless'
 * Open MATLAB
 * Go to the directory 'ALVA'
 * add the different directories of the ALVA on your MATLAB path — Now you are ready to run the validation examples provided and generate your own analysis. 
-* ALAVA is compatible with [OCTAVE](https://www.gnu.org/software/octave/index)
+* ALVA is compatible with [OCTAVE](https://www.gnu.org/software/octave/index)
+
+For example validation of the library can be launched with
+
+``` matlab
+addpath("basic")
+addpath("examples")
+addpath("validation")
+ALVA_let_validation1
+```

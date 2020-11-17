@@ -1,7 +1,7 @@
 function response = validation_let(alva)
 %--------------------------------------------------------------------------
 % DESCRIPTION:
-% This function looks up caluclated response for different validation
+% This function looks up calculated response for different validation
 % cases using the computer program ELLEA1 [1]
 % -------------------------------------------------------------------------
 % References
