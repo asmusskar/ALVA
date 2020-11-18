@@ -104,8 +104,8 @@ plot(alva.Xd(:,1),ux,':ks','LineWidth',1.25,'MarkerSize',5)
 hold on
 plot(ellea(:,1),ellea(:,8),':b+','LineWidth',1,'MarkerSize',5)
 hold on
-legend({'ALVA','ELLEA1'},...
-    'Location','NorthEast', 'FontSize',9)
+set(gca,'FontSize',9)
+legend({'ALVA','ELLEA1'},'Location','SouthEast')
 axis ij
 xlabel('Distance from load, x-axis [mm]')
 ylabel('Displacement, u_{x} [mm]')
@@ -117,8 +117,8 @@ plot(alva.Xd(:,1),uz,':ks','LineWidth',1.25,'MarkerSize',5)
 hold on
 plot(ellea(:,1),ellea(:,10),':b+','LineWidth',1,'MarkerSize',5)
 hold on
-legend({'ALVA','ELLEA1'},...
-    'Location','SouthEast', 'FontSize',9)
+set(gca,'FontSize',9)
+legend({'ALVA','ELLEA1'},'Location','SouthEast')
 axis ij
 xlabel('Distance from load, x-axis [mm]')
 ylabel('Displacement, u_{z} [mm]')
