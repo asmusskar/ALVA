@@ -102,8 +102,8 @@ plot(alva.gpos,alva.dFWD,'bo','LineWidth',1.25,'MarkerSize',5)
 hold on
 plot(alva.Xd(:,1),alva.uz,'-.r','LineWidth',1.0,'MarkerSize',6)
 hold on
-legend({'Measured','Predicted'},...
-    'Location','SouthEast', 'FontSize',9)
+set(gca,'FontSize',9)
+legend({'Measured','Predicted'},'Location','SouthEast')
 axis ij
 xlabel('Distance from load, x-axis [mm]')
 ylabel('Displacement, u_{z} [mm]')
