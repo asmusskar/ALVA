@@ -188,67 +188,80 @@ slip_dual = [0.700    0   9  193 0.0000      0  -12  204;
 
 
 % -------------------------------------------------------------------------
-% Display results as matlab table (not compatible with Octave)
+% Plot results (table function not compatible with Octave)
 % -------------------------------------------------------------------------
 
-%Location = {'A1';'A2';'A3';'A4';'A5';'A6';'A7';'A8'};
-%Description     = [{'Vertical stress surface at center of load'};...
-%            {'Horizontal strain bottom layer 1 at center of load'};...
-%            {'Vertical strain top layer 2 at center of load'};...
-%            {'Vertical strain top layer 3 at center of load'};...
-%            {'Vertical stress surface at edge of load'};...
-%            {'Horizontal strain bottom layer 1 at edge of load'};...
-%            {'Vertical strain top layer 2 at edge of load'};...
-%            {'Vertical strain top layer 3 at edge of load'}];
+Location = {'R1';'R2';'R3';'R4';'R5';'R6';'R7';'R8'};
+Description     = [{'Vertical stress surface at center of load'};...
+            {'Horizontal strain bottom layer 1 at center of load'};...
+            {'Vertical strain top layer 2 at center of load'};...
+            {'Vertical strain top layer 3 at center of load'};...
+            {'Vertical stress surface at edge of load'};...
+            {'Horizontal strain bottom layer 1 at edge of load'};...
+            {'Vertical strain top layer 2 at edge of load'};...
+            {'Vertical strain top layer 3 at edge of load'}];
 %TableGuide = table(Description,'RowNames',Location)
 
-%CodeName1 = {'BISAR';'KENLAYER';'GAMES';'ALVA (slip)';'ALVA (bond)'};
-%CodeName2 = {'BISAR';'KENLAYER';'GAMES';'ALVA (slip)'};
+TableGuide = [{'R1: Vertical stress surface at center of load'};...
+            {'R2: Horizontal strain bottom layer 1 at center of load'};...
+            {'R3: Vertical strain top layer 2 at center of load'};...
+            {'R4: Vertical strain top layer 3 at center of load'};...
+            {'R5: Vertical stress surface at edge of load'};...
+            {'R6: Horizontal strain bottom layer 1 at edge of load'};...
+            {'R7: Vertical strain top layer 2 at edge of load'};...
+            {'R8: Vertical strain top layer 3 at edge of load'}]
+
+CodeName1 = {'BISAR';'KENLAYER';'GAMES';'ALVA (slip)';'ALVA (bond)'}
+CodeName2 = {'BISAR';'KENLAYER';'GAMES';'ALVA (slip)'};
 
 % Single wheel bonded interfaces
-%A1sb = [round(bond_single(:,1),1);round(sigz2s(1),1);round(sigz1s(1),1)];
-%A2sb = [round(bond_single(:,2),1);round(epsx2s(2),1);round(epsx1s(2),1)];
-%A3sb = [round(bond_single(:,3),1);round(epsz2s(3),1);round(epsz1s(3),1)];
-%A4sb = [round(bond_single(:,4),1);round(epsz2s(4),1);round(epsz1s(4),1)];
-%A5sb = [round(bond_single(:,5),1);round(sigz2s(5),1);round(sigz1s(5),1)];
-%A6sb = [round(bond_single(:,6),1);round(epsx2s(6),1);round(epsx1s(6),1)];
-%A7sb = [round(bond_single(:,7),1);round(epsz2s(7),1);round(epsz1s(7),1)];
-%A8sb = [round(bond_single(:,8),1);round(epsz2s(8),1);round(epsz1s(8),1)];
+A1sb = [bond_single(:,1);sigz2s(1);sigz1s(1)];
+A2sb = [bond_single(:,2);epsx2s(2);epsx1s(2)];
+A3sb = [bond_single(:,3);epsz2s(3);epsz1s(3)];
+A4sb = [bond_single(:,4);epsz2s(4);epsz1s(4)];
+A5sb = [bond_single(:,5);sigz2s(5);sigz1s(5)];
+A6sb = [bond_single(:,6);epsx2s(6);epsx1s(6)];
+A7sb = [bond_single(:,7);epsz2s(7);epsz1s(7)];
+A8sb = [bond_single(:,8);epsz2s(8);epsz1s(8)];
 %SingleWheelBond = table(A1sb,A2sb,A3sb,A4sb,A5sb,A6sb,A7sb,A8sb,...
 %    'RowNames',CodeName1)
-%
+SingleWheelBond = [A1sb,A2sb,A3sb,A4sb,A5sb,A6sb,A7sb,A8sb]
+
 % Single wheel unbonded interface 1, bonded interface 2
-%A1ss = [round(slip_single(:,1),1);round(sigz3s(1),1)];
-%A2ss = [round(slip_single(:,2),1);round(epsx3s(2),1)];
-%A3ss = [round(slip_single(:,3),1);round(epsz3s(3),1)];
-%A4ss = [round(slip_single(:,4),1);round(epsz3s(4),1)];
-%A5ss = [round(slip_single(:,5),1);round(sigz3s(5),1)];
-%A6ss = [round(slip_single(:,6),1);round(epsx3s(6),1)];
-%A7ss = [round(slip_single(:,7),1);round(epsz3s(7),1)];
-%A8ss = [round(slip_single(:,8),1);round(epsz3s(8),1)];
+A1ss = [slip_single(:,1);sigz3s(1)];
+A2ss = [slip_single(:,2);epsx3s(2)];
+A3ss = [slip_single(:,3);epsz3s(3)];
+A4ss = [slip_single(:,4);epsz3s(4)];
+A5ss = [slip_single(:,5);sigz3s(5)];
+A6ss = [slip_single(:,6);epsx3s(6)];
+A7ss = [slip_single(:,7);epsz3s(7)];
+A8ss = [slip_single(:,8);epsz3s(8)];
 %SingleWheelSlip = table(A1ss,A2ss,A3ss,A4ss,A5ss,A6ss,A7ss,A8ss,...
 %    'RowNames',CodeName2)
+SingleWheelSlip = [A1ss,A2ss,A3ss,A4ss,A5ss,A6ss,A7ss,A8ss]
 
 % Dual wheel bonded interfaces
-%A1db = [round(bond_dual(:,1),1);round(sigz2d(1),1);round(sigz1d(1),1)];
-%A2db = [round(bond_dual(:,2),1);round(epsy2d(2),1);round(epsy1d(2),1)];
-%A3db = [round(bond_dual(:,3),1);round(epsz2d(3),1);round(epsz1d(3),1)];
-%A4db = [round(bond_dual(:,4),1);round(epsz2d(4),1);round(epsz1d(4),1)];
-%A5db = [round(bond_dual(:,5),1);round(sigz2d(5),1);round(sigz1d(5),1)];
-%A6db = [round(bond_dual(:,6),1);round(epsy2d(6),1);round(epsy1d(6),1)];
-%A7db = [round(bond_dual(:,7),1);round(epsz2d(7),1);round(epsz1d(7),1)];
-%A8db = [round(bond_dual(:,8),1);round(epsz2d(8),1);round(epsz1d(8),1)];
+A1db = [bond_dual(:,1);sigz2d(1);sigz1d(1)];
+A2db = [bond_dual(:,2);epsy2d(2);epsy1d(2)];
+A3db = [bond_dual(:,3);epsz2d(3);epsz1d(3)];
+A4db = [bond_dual(:,4);epsz2d(4);epsz1d(4)];
+A5db = [bond_dual(:,5);sigz2d(5);sigz1d(5)];
+A6db = [bond_dual(:,6);epsy2d(6);epsy1d(6)];
+A7db = [bond_dual(:,7);epsz2d(7);epsz1d(7)];
+A8db = [bond_dual(:,8);epsz2d(8);epsz1d(8)];
 %DualWheelBond = table(A1db,A2db,A3db,A4db,A5db,A6db,A7db,A8db,...
 %    'RowNames',CodeName1)
+DualWheelBond = [A1db,A2db,A3db,A4db,A5db,A6db,A7db,A8db]
 
 % Dual wheel unbonded interface 1, bonded interface 2
-%A1ds = [round(slip_dual(:,1),1);round(sigz3d(1),1)];
-%A2ds = [round(slip_dual(:,2),1);round(epsy3d(2),1)];
-%A3ds = [round(slip_dual(:,3),1);round(epsz3d(3),1)];
-%A4ds = [round(slip_dual(:,4),1);round(epsz3d(4),1)];
-%A5ds = [round(slip_dual(:,5),1);round(sigz3d(5),1)];
-%A6ds = [round(slip_dual(:,6),1);round(epsy3d(6),1)];
-%A7ds = [round(slip_dual(:,7),1);round(epsz3d(7),1)];
-%A8ds = [round(slip_dual(:,8),1);round(epsz3d(8),1)];
+A1ds = [slip_dual(:,1);sigz3d(1)];
+A2ds = [slip_dual(:,2);epsy3d(2)];
+A3ds = [slip_dual(:,3);epsz3d(3)];
+A4ds = [slip_dual(:,4);epsz3d(4)];
+A5ds = [slip_dual(:,5);sigz3d(5)];
+A6ds = [slip_dual(:,6);epsy3d(6)];
+A7ds = [slip_dual(:,7);epsz3d(7)];
+A8ds = [slip_dual(:,8);epsz3d(8)];
 %DualWheelSlip = table(A1ds,A2ds,A3ds,A4ds,A5ds,A6ds,A7ds,A8ds,...
 %    'RowNames',CodeName2)
+DualWheelSlip = [A1ds,A2ds,A3ds,A4ds,A5ds,A6ds,A7ds,A8ds]
