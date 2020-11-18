@@ -119,9 +119,10 @@ plot(ellea(:,6),ellea(:,1),':g+','LineWidth',1,'MarkerSize',5)
 hold on
 plot(ellea(:,7),ellea(:,1),':r+','LineWidth',1,'MarkerSize',5)
 hold on
+set(gca,'FontSize',9)
 legend({'ALVA - epsxy','ALVA - epsyz','ALVA - epsxz',...
     'ELLEA1 - epsxy','ELLEA1 - epsyz','ELLEA1 - epsxz'},...
-    'Location','SouthEast', 'FontSize',9)
+    'Location','SouthEast')
 axis ij
 xlabel('Strain, \epsilon [-]')
 ylabel('Depth, z-axis [mm]')
