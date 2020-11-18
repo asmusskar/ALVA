@@ -446,3 +446,9 @@ addpath("examples")
 addpath("validation")
 ALVA_let_validation1
 ```
+
+## How to contribute
+*	To make changes or add a new function: <i>(i)</i> For the repository (make your own separate copy), <i>(ii)</i> make changes, and <i>(iii)</i> open a 'pull request'. Once approved, it can be merged into the master branch. If you wish to chat beforehand about your contribution, open an issue or email to asmusskar@gmail.com.
+*	If you find a bug in the code: open an 'issue' to notify contributors and create an official record.
+
+Before contributing, please consider how your function fits into ALVA. At a minimum, functions must be well-documented and compatible with [OCTAVE](https://www.gnu.org/software/octave/index), not using any third party components. 
