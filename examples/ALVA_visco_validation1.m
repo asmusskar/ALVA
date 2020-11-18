@@ -123,8 +123,9 @@ plot((-x0:dx0:x0),veres,':k','LineWidth',1.25,'MarkerSize',6)
 hold on, grid on
 plot(ellva(:,1),ellva(:,3),'-.b','LineWidth',1.25,'MarkerSize',6)
 hold on,
+set(gca, 'FontSize',9)
 legend({'ALVA','ELLVA VD'},...
-    'Location','SouthEast', 'FontSize',9)
+    'Location','SouthEast')
 axis ij
 xlabel('Load position relative to evaluation point [mm]')
 ylabel('Displacement, u_z [mm]')
