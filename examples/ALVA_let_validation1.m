@@ -113,8 +113,9 @@ plot(ellea(:,10),ellea(:,1),':b+','LineWidth',1,'MarkerSize',5)
 hold on
 plot(boussinesq(:,2),alva.Xd(:,3),'-.r','LineWidth',1,'MarkerSize',5)
 hold on
+set(gca,'FontSize',9)
 legend({'ALVA','ELLEA1','Analytical'},...
-    'Location','SouthEast', 'FontSize',9)
+    'Location','SouthEast')
 axis ij
 xlabel('Displacement, u_{z} [mm]')
 ylabel('Depth, z-axis [mm]')
@@ -128,8 +129,9 @@ plot(ellea(:,4),ellea(:,1),':b+','LineWidth',1,'MarkerSize',5)
 hold on
 plot(boussinesq(:,1),alva.Xd(:,3),'-.r','LineWidth',1,'MarkerSize',5)
 hold on
+set(gca,'FontSize',9)
 legend({'ALVA','ELLEA1','Analytical'},...
-    'Location','SouthEast', 'FontSize',9)
+    'Location','SouthEast')
 axis ij
 xlabel('Stress, \sigma_{z} [MPa]')
 ylabel('Depth, z-axis [mm]')
