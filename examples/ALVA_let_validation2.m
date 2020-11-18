@@ -111,8 +111,8 @@ plot(uz,alva.Xd(:,3),':ks','LineWidth',1.25,'MarkerSize',5)
 hold on
 plot(ellea(:,10),ellea(:,1),':b+','LineWidth',1,'MarkerSize',5)
 hold on
-legend({'ALVA','ELLEA1'},...
-    'Location','SouthEast', 'FontSize',9)
+set(gca,'FontSize',9)
+legend({'ALVA','ELLEA1'},'Location','SouthEast')
 axis ij
 xlabel('Displacement, u_{z} [mm]')
 ylabel('z-coordinate [mm]')
@@ -124,8 +124,8 @@ plot(sigx,alva.Xd(:,3),':ks','LineWidth',1.25,'MarkerSize',5)
 hold on
 plot(ellea(:,2),ellea(:,1),':b+','LineWidth',1,'MarkerSize',5)
 hold on
-legend({'ALVA','ELLEA1'},...
-    'Location','SouthEast', 'FontSize',9)
+set(gca,'FontSize',9)
+legend({'ALVA','ELLEA1'},'Location','SouthEast')
 axis ij
 xlabel('Stress, \sigma_{x} [MPa]')
 ylabel('Depth, z-axis [mm]')
@@ -137,8 +137,8 @@ plot(sigy,alva.Xd(:,3),':ks','LineWidth',1.25,'MarkerSize',5)
 hold on
 plot(ellea(:,3),ellea(:,1),':b+','LineWidth',1,'MarkerSize',5)
 hold on
-legend({'ALVA','ELLEA1'},...
-    'Location','SouthEast', 'FontSize',9)
+set(gca,'FontSize',9)
+legend({'ALVA','ELLEA1'},'Location','SouthEast')
 axis ij
 xlabel('Stress, \sigma_{y} [MPa]')
 ylabel('Depth, z-axis [mm]')
@@ -150,8 +150,8 @@ plot(sigz,alva.Xd(:,3),':ks','LineWidth',1.25,'MarkerSize',5)
 hold on
 plot(ellea(:,4),ellea(:,1),':b+','LineWidth',1,'MarkerSize',5)
 hold on
-legend({'ALVA','ELLEA1'},...
-    'Location','SouthEast', 'FontSize',9)
+set(gca,'FontSize',9)
+legend({'ALVA','ELLEA1'},'Location','SouthEast')
 axis ij
 xlabel('Stress, \sigma_{z} [MPa]')
 ylabel('Depth, z-axis [mm]')
