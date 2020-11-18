@@ -40,4 +40,7 @@ The computer package ALVA offers a solution for the history of response inside t
 
 Future developments in this package may include mathematical formulations to describe more complex phenomena, e.g., $(i)$ fragmented layer conditions (multi-cracked layers); $(ii)$ both isotropic or transversely isotropic properties; $(iii)$ both vertical and horizontal surface loads. 
 
+# Acknowledgements
+We thank Eyal Levenberg for many fruitful discussions and Julius Nielsen for his input to improve the code performance.
+
 # References
