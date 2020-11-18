@@ -116,9 +116,10 @@ plot(ellea(:,5),ellea(:,1),':g+','LineWidth',1,'MarkerSize',5)
 hold on
 plot(ellea(:,6),ellea(:,1),':r+','LineWidth',1,'MarkerSize',5)
 hold on
+set(gca,'FontSize',9)
 legend({'ALVA - sigxy','ALVA - sigyz','ALVA - sigxz',...
     'ELLEA1 - sigxy','ELLEA1 - sigyz','ELLEA1 - sigxz'},...
-    'Location','SouthEast', 'FontSize',9)
+    'Location','SouthEast')
 axis ij
 xlabel('Stress, \sigma [MPa]')
 ylabel('Depth, z-axis [mm]')
