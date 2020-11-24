@@ -1,9 +1,5 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4289275.svg)](https://doi.org/10.5281/zenodo.4289275)
 
-https://img.shields.io/badge/DOI-10.11583%2FDTU.12387305-red
-
-Skar, Asmus, Andersen, Sebastian and Julius Nielsen (2020): Adaptive Layered Viscoelastic Analysis (ALVA). Technical University of Denmark. Software. https://doi.org/10.11583/DTU.12387305
-
 # ALVA
 Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement modeling. The aim with the software is to equip the civil engineering community with an advanced pavement modeling tool and computer package that is highly adaptive, transparent and open-access, capable of supporting current and future pavement evaluation needs. 
 
@@ -456,3 +452,6 @@ ALVA_let_validation1
 *	If you find a bug in the code: open an 'issue' to notify contributors and create an official record.
 
 Before contributing, please consider how your function fits into ALVA. At a minimum, functions must be well-documented and compatible with [OCTAVE](https://www.gnu.org/software/octave/index), not using any third party components. 
+
+# References
+Skar, Asmus, Andersen, Sebastian and Julius Nielsen (2020): Adaptive Layered Viscoelastic Analysis (ALVA). Technical University of Denmark. Software. https://doi.org/10.11583/DTU.12387305
