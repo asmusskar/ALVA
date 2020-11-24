@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4289275.svg)](https://doi.org/10.5281/zenodo.4289275) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/asmusskar/ALVA?include_prereleases) https://img.shields.io/github/license/asmusskar/ALVA
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4289275.svg)](https://doi.org/10.5281/zenodo.4289275) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/asmusskar/ALVA?include_prereleases) ![GitHub](https://img.shields.io/github/license/asmusskar/ALVA)
 
 # ALVA
 Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement modeling. The aim with the software is to equip the civil engineering community with an advanced pavement modeling tool and computer package that is highly adaptive, transparent and open-access, capable of supporting current and future pavement evaluation needs. 
