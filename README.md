@@ -455,3 +455,6 @@ Before contributing, please consider how your function fits into ALVA. At a mini
 
 # References
 Skar, Asmus, Andersen, Sebastian and Julius Nielsen (2020): Adaptive Layered Viscoelastic Analysis (ALVA). Technical University of Denmark. Software. https://doi.org/10.11583/DTU.12387305
+
+Skar et al., (2020). ALVA: An adaptive MATLAB package for layered viscoelastic analysis. Journal of Open Source Software, 5(55), 2548.
+https://doi.org/10.21105/joss.02548
