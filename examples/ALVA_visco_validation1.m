@@ -101,9 +101,9 @@ alva = VE_response(alva.E,alva);
 % Simulate moving load
 % -------------------------------------------------------------------------
 
-% Select output response: displacements (dx, dy or dz), stresses (sigx, 
-% sigy, sigz, sigxy, sigyz or sigxz), strains (epsx, epsy, epsz, epsxy, 
-% epsyz or epsxz)
+% Select output response: displacements (dxm, dym or dzm), stresses (sigxm, 
+% sigym, sigzm, sigxym, sigyzm or sigxzm), strains (epsxm, epsym, epszm, 
+% epsxym, epsyzm or epsxzm)
 
 letres = alva.dzm;                   % output response dz                                           
 veres  = VE_simulation(letres,alva); % run simulation
