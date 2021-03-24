@@ -1,4 +1,4 @@
-function alva = LET_response(alva)
+function alva = LET_response_plain(alva)
 %--------------------------------------------------------------------------
 % DESCRIPTION:
 % This function evaluates the response of a layered elastic half-space
@@ -20,7 +20,7 @@ ABCD   = alva.ABCD;   % Coefficients of integration
 % References
 % -------------------------------------------------------------------------
 %[2] Burmister. (1945). The general theory of stresses and displacements 
-%    in layered systems. I-iii. Journal of Applied Physics, 16, 89–94, 89–94.
+%    in layered systems. I-iii. Journal of Applied Physics, 16, 89â€“94, 89â€“94.
 % -------------------------------------------------------------------------
 
 % If zi has more entries than length(E)-1, these are removed. In principle
