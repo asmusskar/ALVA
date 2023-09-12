@@ -1,7 +1,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4289275.svg)](https://doi.org/10.5281/zenodo.4289275) [![DOI](http://joss.theoj.org/papers/10.21105/joss.02548/status.svg)](https://doi.org/10.21105/joss.02548) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/asmusskar/ALVA?include_prereleases) ![GitHub](https://img.shields.io/github/license/asmusskar/ALVA) [![View ALVA on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://se.mathworks.com/matlabcentral/fileexchange/77034-alva)
 
 # ALVA
-<b>A<b>daptive <b>L<b>ayered <b>V<b>iscoelastic <b>A<b>nalysis (ALVA) is a MATLAB-package for pavement modeling. The aim with the software is to equip the civil engineering community with an advanced pavement modeling tool and computer package that is highly adaptive, transparent and open-access, capable of supporting current and future pavement evaluation needs. 
+Adaptive Layered Viscoelastic Analysis (ALVA) is a MATLAB-package for pavement modeling. The aim with the software is to equip the civil engineering community with an advanced pavement modeling tool and computer package that is highly adaptive, transparent and open-access, capable of supporting current and future pavement evaluation needs. 
 
 <div>
 <img src="images/Roadmap_ALVA.png" width="100%">
