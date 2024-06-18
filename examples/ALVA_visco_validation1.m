@@ -81,8 +81,9 @@ zz   = rep(3)*ones(length(xx),1); % Mesh z-direction
 Xr   = [xx' yy zz]; alva.Xr = Xr; % Full mesh matrix
 
 % Knots for cubic spline interpolation
-kx   = [0 dx0 2*dx0 3*dx0 4*dx0 5*dx0 6*dx0 8*dx0 10*dx0 15*dx0 20*dx0...
-       30*dx0 40*dx0 60*dx0 80*dx0 100*dx0]; 
+kx   = [0 x0^(2/16) x0^(3/16) x0^(4/16) x0^(5/16) x0^(6/16) x0^(7/16)...
+        x0^(8/16) x0^(9/16) x0^(10/16) x0^(11/16) x0^(12/16) x0^(13/16)...
+        x0^(14/16) x0^(15/16) x0^(16/16)]; 
 Xd   = [kx; ones(1,length(kx))*rep(2); ones(1,length(kx))*rep(3)]'; 
 alva.Xd = Xd; 
 
